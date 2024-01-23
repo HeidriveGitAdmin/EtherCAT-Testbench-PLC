@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_LogicSupply" Id="{ff82c6a0-8dc1-4585-a18c-a3c5cefd7a13}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_LogicSupply
+VAR_IN_OUT
+	bSwitchOn		: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="SwitchOff" Id="{9c28f1b0-2201-485b-9b73-f8448b8b551d}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD SwitchOff]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bSwitchOn := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SwitchOn" Id="{5e0e38e2-5b1a-46a2-b542-f19d9f565a0d}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD SwitchOn]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bSwitchOn := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_LogicSupply">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LogicSupply.SwitchOff">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LogicSupply.SwitchOn">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

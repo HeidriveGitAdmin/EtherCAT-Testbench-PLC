@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_Start" Id="{691bad33-fd39-49a6-b5a9-a63fb496f0d3}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Start
+VAR_INPUT
+	bSwitchOn				: BOOL;
+	bSwitchOff				: BOOL;
+END_VAR
+VAR
+	bSwitchedOn				: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="SwitchOff" Id="{66067207-5224-40d9-9f3e-1736f1f2e435}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD SwitchOff]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bSwitchedOn := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SwitchOn" Id="{9cf239e1-6394-4059-b552-285229f77b77}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD SwitchOn : BOOL
+VAR_INPUT
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bSwitchedOn := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_Start">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Start.SwitchOff">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Start.SwitchOn">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

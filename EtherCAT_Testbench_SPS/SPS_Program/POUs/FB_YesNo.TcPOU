@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_YesNo" Id="{929bb7e6-d658-465b-94c7-36f425484edf}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_YesNo
+VAR_INPUT
+	bYes			: BOOL;
+	bNo				: BOOL;
+END_VAR
+VAR_OUTPUT
+	bAnswer			: BOOL;
+	bGotAnswer		: BOOL;
+END_VAR
+VAR
+	fTrig			: F_Trig;
+	rTrig			: R_Trig;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[rTrig(CLK := bYes);
+fTrig(CLK := bNo);
+
+IF (rTrig.Q OR fTrig.Q) THEN
+	bGotAnswer := TRUE;
+END_IF
+IF bYes THEN
+	bAnswer := TRUE;
+END_IF]]></ST>
+    </Implementation>
+    <Method Name="Reset" Id="{c77281e2-163c-4bf8-bbbb-fd08b0adff3d}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD Reset ]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bAnswer		:= FALSE;
+bGotAnswer 	:= FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_YesNo">
+      <LineId Id="9" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="32" Count="4" />
+    </LineIds>
+    <LineIds Name="FB_YesNo.Reset">
+      <LineId Id="5" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

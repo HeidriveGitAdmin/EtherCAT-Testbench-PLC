@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_WatchPhotoelectricBarrier" Id="{7e558642-c1c0-44b6-9acf-d677532fb110}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_WatchPhotoelectricBarrier
+VAR_INPUT
+	nInterrupted		: UINT;
+END_VAR
+VAR_OUTPUT
+	bInterrupted		: BOOL;
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF nInterrupted < (32767 / 2) THEN
+	bInterrupted := TRUE;
+ELSE
+	bInterrupted := FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_WatchPhotoelectricBarrier">
+      <LineId Id="9" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="14" Count="1" />
+      <LineId Id="13" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

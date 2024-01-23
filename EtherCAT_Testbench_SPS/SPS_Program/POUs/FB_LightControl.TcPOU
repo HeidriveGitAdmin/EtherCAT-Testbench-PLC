@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_LightControl" Id="{bc569b6f-d53e-455e-a235-418c41eba51f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_LightControl
+VAR_IN_OUT
+	bTrig1		:	BOOL;
+	bTrig2		: 	BOOL;
+	bTrig3		: 	BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Green" Id="{3b537be2-2633-45a3-9ea2-c5a56a734abb}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD Green
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bTrig1	:= FALSE;
+bTrig2	:= TRUE;
+bTrig3	:= FALSE;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Red" Id="{1f0aa78e-55df-4e06-ba94-b62a7a084276}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD Red ]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bTrig1	:= TRUE;
+bTrig2	:= FALSE;
+bTrig3	:= FALSE;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SwitchOff" Id="{63cbc77a-36fb-4a3c-87c8-b2d1af79befe}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD SwitchOff : BOOL]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bTrig1	:= FALSE;
+bTrig2	:= FALSE;
+bTrig3	:= FALSE;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="White" Id="{2b71246a-d19f-441d-aa2d-cbcd0c06dbaf}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD White : BOOL]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bTrig1	:= FALSE;
+bTrig2	:= FALSE;
+bTrig3	:= TRUE;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Yellow" Id="{ae613c60-aaa8-4916-bf00-efe48abe45c0}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD Yellow : BOOL]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bTrig1	:= TRUE;
+bTrig2	:= TRUE;
+bTrig3	:= FALSE;
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_LightControl">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LightControl.Green">
+      <LineId Id="7" Count="1" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LightControl.Red">
+      <LineId Id="9" Count="2" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LightControl.SwitchOff">
+      <LineId Id="6" Count="2" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LightControl.White">
+      <LineId Id="9" Count="2" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LightControl.Yellow">
+      <LineId Id="6" Count="2" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

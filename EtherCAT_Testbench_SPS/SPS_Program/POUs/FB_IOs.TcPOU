@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_IOs" Id="{4db9a8db-2dbb-495a-ba78-a803ff7bd4d7}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_IOs
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Check" Id="{e65b581f-0727-480e-9083-0f7e20a36f9e}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD Check : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_IOs">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_IOs.Check">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_PowerSupply" Id="{694a453a-0e4c-4960-a1f7-c8c02c5c966b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_PowerSupply
+VAR_INPUT
+	nMaxVoltage						: UDINT;
+	nMaxPower						: DINT;
+	nMaxCurrent						: UINT;
+	
+	nCurrentFromPowerSupply			: UINT;
+	nVoltageFromPowerSupply			: UINT;
+	
+	nReferenceVoltage				: UINT;  //Reference Voltage 
+END_VAR
+
+VAR_OUTPUT
+	nVoltage						: UINT;
+	nCurrent						: UINT;
+	nPower							: UINT;
+	bREMSB							: BOOL;
+END_VAR
+VAR
+	nTargetVoltage					: UDINT;
+	nTargetPower					: UDINT;
+	nTargetCurrent					: UDINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[bREMSB := TRUE;
+]]></ST>
+    </Implementation>
+    <Property Name="CurrentCurrent" Id="{a246868a-ba71-48e9-9896-2b08ca3d4ff3}">
+      <Declaration><![CDATA[PROPERTY CurrentCurrent : UINT]]></Declaration>
+      <Get Name="Get" Id="{bf7362a7-3785-4939-b009-d47037af8596}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[CurrentCurrent := nCurrentFromPowerSupply * nMaxCurrent/nReferenceVoltage;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="CurrentVoltage" Id="{3d9b079d-b735-4142-af37-f5b7ebda1a0c}">
+      <Declaration><![CDATA[PROPERTY CurrentVoltage : UINT]]></Declaration>
+      <Get Name="Get" Id="{d81ca134-74ae-4c2a-b41c-4cd6d60e5feb}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[CurrentVoltage := UDINT_TO_UINT(nVoltageFromPowerSupply * nMaxVoltage/nReferenceVoltage);]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="SwitchOff" Id="{406dab0c-c3e4-4232-9c80-67c79b87fe18}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD SwitchOff ]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nVoltage := 0;
+nCurrent := 0;
+nPower := 0;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SwitchOn" Id="{9eac384c-11d4-43b4-a0fd-342805cfe863}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD SwitchOn ]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nVoltage := UDINT_TO_UINT(nTargetVoltage);
+nCurrent := UDINT_TO_UINT(nTargetCurrent);
+nPower := UDINT_TO_UINT(nTargetPower);]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="TargetCurrent" Id="{d343f563-dc2f-4ba3-a5a7-3e8121e2a766}">
+      <Declaration><![CDATA[PROPERTY TargetCurrent : UDINT]]></Declaration>
+      <Get Name="Get" Id="{585aae2f-bc46-4e18-be91-dde0c664beb6}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TargetCurrent := nTargetCurrent * nMaxCurrent/nReferenceVoltage;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{085509d1-6e2e-4b1b-8ff1-afe22a9fd03e}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF TargetCurrent < nMaxCurrent THEN
+	nTargetCurrent := TargetCurrent * nReferenceVoltage / nMaxCurrent;
+ELSE
+	nTargetCurrent := 32767;
+END_IF]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Property Name="TargetPower" Id="{1014a120-1881-45f0-b94a-9732201537b5}">
+      <Declaration><![CDATA[PROPERTY TargetPower : UDINT]]></Declaration>
+      <Get Name="Get" Id="{be726a65-190c-41c6-8fc1-3f96a7d85c64}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TargetPower := UDINT_TO_UINT(nTargetPower * nMaxPower/nReferenceVoltage);]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{9188b96a-589d-4b46-ba10-202af631135e}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF TargetPower < nMaxPower THEN
+	nTargetPower := UDINT_TO_UINT(TargetPower * nReferenceVoltage / nMaxPower);
+ELSE
+	nTargetPower := 32767;
+END_IF]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Property Name="TargetVoltage" Id="{7ef3f35e-3d08-494d-a6bc-ff6f23787064}">
+      <Declaration><![CDATA[PROPERTY TargetVoltage : UDINT]]></Declaration>
+      <Get Name="Get" Id="{18c39cb4-9b3c-4096-b002-e3c74cb3eb02}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TargetVoltage := nTargetVoltage * nMaxVoltage/nReferenceVoltage;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{2c0b7b25-4e40-4b6c-b65f-6839ac12aeeb}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF TargetVoltage < nMaxVoltage THEN
+	nTargetVoltage := TargetVoltage * nReferenceVoltage/nMaxVoltage;	
+	ADSLOGSTR(msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
+        	msgFmtStr   := 'Desired Voltage is lower than nMaxVoltage: %s', 
+        	strArg      := UDINT_TO_STRING(TargetVoltage)
+    		);  
+ELSE
+	nTargetVoltage := 32767;
+	ADSLOGSTR(msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
+        	msgFmtStr   := 'Desired Voltage is higher than nMaxVoltage: %s', 
+        	strArg      := UDINT_TO_STRING(TargetVoltage)
+    		);  
+END_IF
+]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <LineIds Name="FB_PowerSupply">
+      <LineId Id="89" Count="0" />
+      <LineId Id="80" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PowerSupply.CurrentCurrent.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PowerSupply.CurrentVoltage.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PowerSupply.SwitchOff">
+      <LineId Id="6" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="8" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PowerSupply.SwitchOn">
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="1" />
+    </LineIds>
+    <LineIds Name="FB_PowerSupply.TargetCurrent.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PowerSupply.TargetCurrent.Set">
+      <LineId Id="2" Count="1" />
+      <LineId Id="5" Count="1" />
+      <LineId Id="4" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PowerSupply.TargetPower.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PowerSupply.TargetPower.Set">
+      <LineId Id="2" Count="1" />
+      <LineId Id="5" Count="1" />
+      <LineId Id="4" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PowerSupply.TargetVoltage.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PowerSupply.TargetVoltage.Set">
+      <LineId Id="15" Count="4" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="8" Count="1" />
+      <LineId Id="21" Count="2" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

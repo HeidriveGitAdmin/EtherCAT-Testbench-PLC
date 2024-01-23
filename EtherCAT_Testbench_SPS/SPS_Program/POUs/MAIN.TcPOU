@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="MAIN" Id="{d3f2214c-4b11-492c-9b67-0fde19f696df}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+//A61
+VAR
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1018)^Channel 1^Input'} 
+	bA61_1		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1018)^Channel 3^Input'} 
+	bA61_2		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1018)^Channel 5^Input'} 
+	bA61_3		AT %I* 				: BOOL; 
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1018)^Channel 7^Input'} 	
+	bA61_4		AT %I* 				: BOOL;	
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1018)^Channel 2^Input'} 		
+	bA61_5		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1018)^Channel 4^Input'}	
+	bA61_6		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1018)^Channel 6^Input'}	
+	bA61_7		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1018)^Channel 8^Input'}
+	bA61_8		AT %I* 				: BOOL;
+END_VAR
+
+
+//A62
+VAR
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1018)^Channel 1^Input'} 
+	bA62_1		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1018)^Channel 3^Input'} 
+	bA62_2		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1018)^Channel 5^Input'} 
+	bA62_3		AT %I* 				: BOOL; 
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1018)^Channel 7^Input'} 	
+	bA62_4		AT %I* 				: BOOL;	
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1018)^Channel 2^Input'} 		
+	bA62_5		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1018)^Channel 4^Input'}	
+	bA62_6		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1018)^Channel 6^Input'}	
+	bA62_7		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1018)^Channel 8^Input'}
+	bA62_8		AT %I* 				: BOOL;
+END_VAR
+
+
+//A63
+VAR
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1018)^Channel 1^Input'} 
+	bA63_1		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1018)^Channel 3^Input'} 
+	bA63_2		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1018)^Channel 5^Input'} 
+	bA63_3		AT %I* 				: BOOL; 
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1018)^Channel 7^Input'} 	
+	bA63_4		AT %I* 				: BOOL;	
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1018)^Channel 2^Input'} 		
+	bA63_5		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1018)^Channel 4^Input'}	
+	bA63_6		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1018)^Channel 6^Input'}	
+	bA63_7		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1018)^Channel 8^Input'}
+	bA63_8		AT %I* 				: BOOL;
+END_VAR
+
+
+//A64
+VAR
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1018)^Channel 1^Input'}
+	bA64_1		AT %I*				: BOOL; 
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1018)^Channel 3^Input'}	
+	bA64_2		AT %I* 				: BOOL;	
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1018)^Channel 5^Input'}
+	bA64_3		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1018)^Channel 7^Input'}
+	bA64_4		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1018)^Channel 2^Input'}
+	bA64_5		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1018)^Channel 4^Input'}
+	bA64_6		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1018)^Channel 6^Input'}	
+	bA64_7		AT %I* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1018)^Channel 8^Input'}
+	bA64_8		AT %I* 				: BOOL;	
+END_VAR
+
+
+//A71
+VAR	
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL4104)^AO Output Channel 1^Analog output'} 
+	nA71_1		AT %Q* 				: UINT;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL4104)^AO Output Channel 3^Analog output'} 
+	nA71_3		AT %Q* 				: UINT;	
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL4104)^AO Output Channel 2^Analog output'} 
+	nA71_5		AT %Q* 				: UINT;	
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL4104)^AO Output Channel 4^Analog output'} 
+	nA71_7		AT %Q* 				: UINT;		
+END_VAR
+
+
+//A72
+VAR
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 7 (EL3064)^AI Standard Channel 1^Value'}
+	nA72_1		AT %I* 				: UINT;	
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 7 (EL3064)^AI Standard Channel 3^Value'}
+ 	nA72_3		AT %I* 				: UINT;	
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 7 (EL3064)^AI Standard Channel 2^Value'}
+	nA72_5		AT %I* 				: UINT;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 7 (EL3064)^AI Standard Channel 4^Value'}	
+	nA72_7		AT %I* 				: UINT;	
+END_VAR
+
+
+//A81
+VAR
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL2068)^DOS RxPDO-Map Outputs Ch.01^Output'}	
+	bA81_1		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL2068)^DOS RxPDO-Map Outputs Ch.03^Output'}		
+	bA81_2		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL2068)^DOS RxPDO-Map Outputs Ch.05^Output'}		
+	bA81_3		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL2068)^DOS RxPDO-Map Outputs Ch.07^Output'} 
+	bA81_4		AT %Q* 				: BOOL; 
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL2068)^DOS RxPDO-Map Outputs Ch.02^Output'}
+	bA81_5		AT %Q* 				: BOOL; 
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL2068)^DOS RxPDO-Map Outputs Ch.04^Output'}
+	bA81_6		AT %Q* 				: BOOL;	
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL2068)^DOS RxPDO-Map Outputs Ch.06^Output'}
+	bA81_7		AT %Q* 				: BOOL; 
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL2068)^DOS RxPDO-Map Outputs Ch.08^Output'}
+	bA81_8		AT %Q* 				: BOOL; 
+END_VAR
+
+
+//A82
+VAR
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL2068)^DOS RxPDO-Map Outputs Ch.01^Output'}
+	bA82_1		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL2068)^DOS RxPDO-Map Outputs Ch.03^Output'}
+	bA82_2		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL2068)^DOS RxPDO-Map Outputs Ch.05^Output'}
+	bA82_3		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL2068)^DOS RxPDO-Map Outputs Ch.07^Output'}
+	bA82_4		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL2068)^DOS RxPDO-Map Outputs Ch.02^Output'}
+	bA82_5		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL2068)^DOS RxPDO-Map Outputs Ch.04^Output'}
+	bA82_6		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL2068)^DOS RxPDO-Map Outputs Ch.06^Output'}
+	bA82_7		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL2068)^DOS RxPDO-Map Outputs Ch.08^Output'}
+	bA82_8		AT %Q* 				: BOOL;
+END_VAR
+
+
+//A83
+VAR
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL2068)^DOS RxPDO-Map Outputs Ch.01^Output'}
+	bA83_1		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL2068)^DOS RxPDO-Map Outputs Ch.03^Output'}
+	bA83_2		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL2068)^DOS RxPDO-Map Outputs Ch.05^Output'}
+	bA83_3		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL2068)^DOS RxPDO-Map Outputs Ch.07^Output'}
+	bA83_4		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL2068)^DOS RxPDO-Map Outputs Ch.02^Output'}
+	bA83_5		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL2068)^DOS RxPDO-Map Outputs Ch.04^Output'}
+	bA83_6		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL2068)^DOS RxPDO-Map Outputs Ch.06^Output'}
+	bA83_7		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL2068)^DOS RxPDO-Map Outputs Ch.08^Output'}
+	bA83_8		AT %Q* 				: BOOL;	
+END_VAR
+
+
+//A84
+//TODO
+VAR	
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL2068)^DOS RxPDO-Map Outputs Ch.01^Output'}
+	bA84_1		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL2068)^DOS RxPDO-Map Outputs Ch.02^Output'}
+	bA84_2		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL2068)^DOS RxPDO-Map Outputs Ch.03^Output'}
+	bA84_3		AT %Q* 				: BOOL;	
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL2068)^DOS RxPDO-Map Outputs Ch.04^Output'}
+	bA84_4		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL2068)^DOS RxPDO-Map Outputs Ch.05^Output'}
+	bA84_5		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL2068)^DOS RxPDO-Map Outputs Ch.06^Output'}
+	bA84_6		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL2068)^DOS RxPDO-Map Outputs Ch.07^Output'}
+	bA85_7		AT %Q* 				: BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL2068)^DOS RxPDO-Map Outputs Ch.08^Output'}
+	bA84_8		AT %Q* 				: BOOL;
+END_VAR
+
+VAR
+	fbLightControlLeft				: FB_LightControl;
+	fbLightControlRight				: FB_LightControl;
+	fbPowerSupplyLeft				: FB_PowerSupply;
+	fbStartLeft						: FB_Start;
+	fbLogicSupplyLeft				: FB_LogicSupply;
+	fbLogicSupplyRight				: FB_LogicSupply;
+	fbYesNoLeft						: FB_YesNo;
+	fbYesNoRight					: FB_YesNo;
+	fbIOsLeft						: FB_IOs;
+	fbIOsRight						: FB_IOs;
+	fbWatchPhotoelectricBarrierLeft	: FB_WatchPhotoelectricBarrier;
+	fbSTOLeft						: FB_LogicSupply;
+END_VAR
+
+VAR
+	nTargetCurrentLeft				: UDINT;
+	nTargetVoltageLeft				: UDINT;
+	nTargetPowerLeft				: UDINT;
+	nCurrentLeft					: UDINT;
+	nVoltageLeft					: UDINT;
+END_VAR
+
+VAR
+	bTestGreen						: BOOL;
+	bTestRed						: BOOL;
+	bTestWhite						: BOOL;
+	bTestYellow						: BOOL;
+	bSwitchOff						: BOOL;
+	bTestLogicOn					: BOOL;
+	bTestLogicOff					: BOOL;
+	bTestPowerSupply				: BOOL;
+	bReset							: BOOL;
+	bSetPowVolCurr					: BOOL;
+	bSwitchOnPowerSupply			: BOOL;
+	bSwitchOffPowerSupply			: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbLightControlLeft (bTrig1 := bA84_1,  //weiß
+					bTrig2 := bA84_3,	//Grau
+				 	bTrig3 := bA84_2);	//Schwarz
+				 
+fbLightControlRight(bTrig1	:= bA84_4,	//weiß
+					bTrig2	:= bA84_6,	//grau
+					bTrig3	:= bA84_5);	//schwarz
+			
+fbStartLeft(bSwitchOn := bA64_1,
+			bSwitchOff := bA64_2);	
+		
+fbLogicSupplyLeft(bSwitchOn := bA82_3);		
+fbLogicSupplyRight (bSwitchOn := bA82_7);
+fbSTOLeft(bSwitchOn := bA82_5);
+
+fbPowerSupplyLeft(nMaxVoltage := 80000,
+					nMaxPower := 150000,
+					nMaxCurrent := 50000,
+					nCurrentFromPowerSupply := nA72_3,
+					nVoltageFromPowerSupply := nA72_5,
+					nReferenceVoltage := nA72_1,
+					bREMSB => bA81_5,
+					nVoltage => nA71_1,
+					nCurrent => nA71_5,
+					nPower => nA71_3);				
+					
+fbYesNoLeft(bYes := bA64_1,
+			bNo := bA64_2);
+			
+fbWatchPhotoelectricBarrierLeft(nInterrupted := nA72_7);
+
+IF fbWatchPhotoelectricBarrierLeft.bInterrupted THEN
+	fbPowerSupplyLeft.SwitchOff();
+	fbLogicSupplyLeft.SwitchOff();
+END_IF
+
+nCurrentLeft := fbPowerSupplyLeft.CurrentCurrent;
+nVoltageLeft := fbPowerSupplyLeft.CurrentVoltage;
+
+//Zum testen
+IF bTestWhite THEN
+	fbLightControlLeft.White();
+	//fbLightControlRight.White();
+	bTestWhite := FALSE;
+END_IF
+IF bTestGreen THEN
+	fbLightControlLeft.Green();
+	fbLightControlRight.Green();
+	bTestGreen := FALSE;
+END_IF
+
+IF bTestRed THEN
+	fbLightControlLeft.Red();
+	fbLightControlRight.Red();
+	bTestRed := FALSE;
+END_IF
+
+IF bTestYellow THEN
+	fbLightControlLeft.Yellow();
+	fbLightControlRight.Yellow();
+	bTestYellow := FALSE;
+END_IF
+
+IF bSwitchOff THEN
+	fbLightControlLeft.SwitchOff();
+	fbLightControlRight.SwitchOff();
+	bSwitchOff := FALSE;
+END_IF
+
+IF bTestLogicOn THEN
+	fbLogicSupplyLeft.SwitchOn();
+	fbSTOLeft.SwitchOn();
+	bTestLogicOn := FALSE;
+END_IF
+IF bTestLogicOff THEN
+	fbLogicSupplyLeft.SwitchOff();
+	fbSTOLeft.SwitchOff();
+	bTestLogicOff := FALSE;
+END_IF
+
+IF bReset THEN
+	fbYesNoLeft.Reset();
+	bReset := FALSE;
+END_IF
+
+IF bSetPowVolCurr THEN
+	fbPowerSupplyLeft.TargetCurrent := nTargetCurrentLeft;
+	fbPowerSupplyLeft.TargetVoltage := nTargetVoltageLeft;
+	fbPowerSupplyLeft.TargetPower := nTargetPowerLeft;
+	bSetPowVolCurr := FALSE;
+END_IF
+
+IF bSwitchOnPowerSupply THEN
+	fbPowerSupplyLeft.SwitchOn();
+	bSwitchOnPowerSupply := FALSE;
+END_IF
+
+IF bSwitchOffPowerSupply THEN
+	fbPowerSupplyLeft.SwitchOff();
+	bSwitchOffPowerSupply := FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="36" Count="1" />
+      <LineId Id="40" Count="3" />
+      <LineId Id="215" Count="0" />
+      <LineId Id="329" Count="0" />
+      <LineId Id="332" Count="0" />
+      <LineId Id="848" Count="0" />
+      <LineId Id="415" Count="0" />
+      <LineId Id="330" Count="0" />
+      <LineId Id="2048" Count="0" />
+      <LineId Id="849" Count="0" />
+      <LineId Id="846" Count="0" />
+      <LineId Id="1085" Count="3" />
+      <LineId Id="1099" Count="4" />
+      <LineId Id="1092" Count="0" />
+      <LineId Id="506" Count="1" />
+      <LineId Id="851" Count="1" />
+      <LineId Id="854" Count="0" />
+      <LineId Id="853" Count="0" />
+      <LineId Id="855" Count="0" />
+      <LineId Id="857" Count="0" />
+      <LineId Id="856" Count="0" />
+      <LineId Id="1814" Count="0" />
+      <LineId Id="1813" Count="0" />
+      <LineId Id="1815" Count="0" />
+      <LineId Id="859" Count="0" />
+      <LineId Id="324" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="320" Count="0" />
+      <LineId Id="322" Count="1" />
+      <LineId Id="321" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="63" Count="1" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="72" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="76" Count="1" />
+      <LineId Id="503" Count="0" />
+      <LineId Id="597" Count="0" />
+      <LineId Id="595" Count="0" />
+      <LineId Id="598" Count="0" />
+      <LineId Id="2049" Count="0" />
+      <LineId Id="600" Count="0" />
+      <LineId Id="599" Count="0" />
+      <LineId Id="601" Count="1" />
+      <LineId Id="2050" Count="0" />
+      <LineId Id="604" Count="0" />
+      <LineId Id="603" Count="0" />
+      <LineId Id="606" Count="0" />
+      <LineId Id="605" Count="0" />
+      <LineId Id="608" Count="0" />
+      <LineId Id="610" Count="0" />
+      <LineId Id="609" Count="0" />
+      <LineId Id="1330" Count="0" />
+      <LineId Id="1329" Count="0" />
+      <LineId Id="2283" Count="1" />
+      <LineId Id="2282" Count="0" />
+      <LineId Id="1331" Count="0" />
+      <LineId Id="1333" Count="0" />
+      <LineId Id="1340" Count="0" />
+      <LineId Id="1339" Count="0" />
+      <LineId Id="1343" Count="0" />
+      <LineId Id="1341" Count="1" />
+      <LineId Id="1346" Count="0" />
+      <LineId Id="1345" Count="0" />
+      <LineId Id="1348" Count="0" />
+      <LineId Id="1350" Count="0" />
+      <LineId Id="1349" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
