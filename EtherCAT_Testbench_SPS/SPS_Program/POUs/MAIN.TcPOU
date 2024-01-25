@@ -232,6 +232,8 @@ VAR
 	bSetPowVolCurr					: BOOL;
 	bSwitchOnPowerSupply			: BOOL;
 	bSwitchOffPowerSupply			: BOOL;
+	
+	bGotAnswer : BOOL := FALSE;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbLightControlLeft (bTrig1 := bA84_1,  //weiß
@@ -261,7 +263,8 @@ fbPowerSupplyLeft(nMaxVoltage := 80000,
 					nPower => nA71_3);				
 					
 fbYesNoLeft(bYes := bA64_1,
-			bNo := bA64_2);
+			bNo := bA64_2,
+			bGotAnswer => bGotAnswer);
 			
 fbWatchPhotoelectricBarrierLeft(nInterrupted := nA72_7);
 
@@ -319,12 +322,12 @@ IF bReset THEN
 	bReset := FALSE;
 END_IF
 
-IF bSetPowVolCurr THEN
-	fbPowerSupplyLeft.TargetCurrent := nTargetCurrentLeft;
-	fbPowerSupplyLeft.TargetVoltage := nTargetVoltageLeft;
-	fbPowerSupplyLeft.TargetPower := nTargetPowerLeft;
-	bSetPowVolCurr := FALSE;
-END_IF
+
+fbPowerSupplyLeft.TargetCurrent := nTargetCurrentLeft;
+fbPowerSupplyLeft.TargetVoltage := nTargetVoltageLeft;
+fbPowerSupplyLeft.TargetPower := nTargetPowerLeft;
+bSetPowVolCurr := FALSE;
+
 
 IF bSwitchOnPowerSupply THEN
 	fbPowerSupplyLeft.SwitchOn();
@@ -353,6 +356,7 @@ END_IF]]></ST>
       <LineId Id="1099" Count="4" />
       <LineId Id="1092" Count="0" />
       <LineId Id="506" Count="1" />
+      <LineId Id="2520" Count="0" />
       <LineId Id="851" Count="1" />
       <LineId Id="854" Count="0" />
       <LineId Id="853" Count="0" />

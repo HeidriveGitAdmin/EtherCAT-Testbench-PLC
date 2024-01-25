@@ -117,16 +117,16 @@ END_IF]]></ST>
         <Implementation>
           <ST><![CDATA[IF TargetVoltage < nMaxVoltage THEN
 	nTargetVoltage := TargetVoltage * nReferenceVoltage/nMaxVoltage;	
-	ADSLOGSTR(msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
-        	msgFmtStr   := 'Desired Voltage is lower than nMaxVoltage: %s', 
-        	strArg      := UDINT_TO_STRING(TargetVoltage)
-    		);  
+	//ADSLOGSTR(msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
+    //    	msgFmtStr   := 'Desired Voltage is lower than nMaxVoltage: %s', 
+    //    	strArg      := UDINT_TO_STRING(TargetVoltage)
+    //		);  
 ELSE
 	nTargetVoltage := 32767;
-	ADSLOGSTR(msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
-        	msgFmtStr   := 'Desired Voltage is higher than nMaxVoltage: %s', 
-        	strArg      := UDINT_TO_STRING(TargetVoltage)
-    		);  
+	//ADSLOGSTR(msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
+    //    	msgFmtStr   := 'Desired Voltage is higher than nMaxVoltage: %s', 
+    //    	strArg      := UDINT_TO_STRING(TargetVoltage)
+    //		);  
 END_IF
 ]]></ST>
         </Implementation>
