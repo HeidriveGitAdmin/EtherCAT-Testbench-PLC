@@ -109,7 +109,12 @@ END_IF]]></ST>
       <Get Name="Get" Id="{18c39cb4-9b3c-4096-b002-e3c74cb3eb02}">
         <Declaration><![CDATA[]]></Declaration>
         <Implementation>
-          <ST><![CDATA[TargetVoltage := nTargetVoltage * nMaxVoltage/nReferenceVoltage;]]></ST>
+          <ST><![CDATA[IF (nReferenceVoltage = 0) THEN
+	TargetVoltage := 0;
+ELSE
+		TargetVoltage := nTargetVoltage * nMaxVoltage/nReferenceVoltage;
+END_IF
+]]></ST>
         </Implementation>
       </Get>
       <Set Name="Set" Id="{2c0b7b25-4e40-4b6c-b65f-6839ac12aeeb}">
@@ -127,8 +132,7 @@ ELSE
     //    	msgFmtStr   := 'Desired Voltage is higher than nMaxVoltage: %s', 
     //    	strArg      := UDINT_TO_STRING(TargetVoltage)
     //		);  
-END_IF
-]]></ST>
+END_IF]]></ST>
         </Implementation>
       </Set>
     </Property>
@@ -148,8 +152,8 @@ END_IF
       <LineId Id="8" Count="0" />
     </LineIds>
     <LineIds Name="FB_PowerSupply.SwitchOn">
-      <LineId Id="5" Count="0" />
-      <LineId Id="7" Count="1" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="8" Count="0" />
     </LineIds>
     <LineIds Name="FB_PowerSupply.TargetCurrent.Get">
       <LineId Id="2" Count="0" />
@@ -168,6 +172,8 @@ END_IF
       <LineId Id="4" Count="0" />
     </LineIds>
     <LineIds Name="FB_PowerSupply.TargetVoltage.Get">
+      <LineId Id="3" Count="1" />
+      <LineId Id="6" Count="2" />
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="FB_PowerSupply.TargetVoltage.Set">
@@ -177,7 +183,6 @@ END_IF
       <LineId Id="21" Count="2" />
       <LineId Id="20" Count="0" />
       <LineId Id="7" Count="0" />
-      <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

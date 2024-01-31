@@ -245,7 +245,7 @@ fbLightControlRight(bTrig1	:= bA84_4,	//weiß
 					bTrig3	:= bA84_5);	//schwarz
 			
 fbStartLeft(bSwitchOn := bA64_1,
-			bSwitchOff := bA64_2);	
+			bSwitchOff := bA64_2);
 		
 fbLogicSupplyLeft(bSwitchOn := bA82_3);		
 fbLogicSupplyRight (bSwitchOn := bA82_7);

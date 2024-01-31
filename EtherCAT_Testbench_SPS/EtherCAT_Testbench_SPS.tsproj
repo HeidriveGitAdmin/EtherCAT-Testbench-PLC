@@ -1226,22 +1226,52 @@
 				</Box>
 				<EtherCAT/>
 			</Device>
-			<Device Id="5" DevType="11" AmsPort="28677">
-				<Name>Device 5 (COM Port)</Name>
+			<Device Id="3" DevType="112" AmsPort="28675" AmsNetId="5.124.224.126.4.1" RemoteName="Gerät 3 (EtherCAT Automation Protocol)">
+				<Name>Gerät 3 (EtherCAT Automation Protocol)</Name>
 				<AddressInfo>
-					<Pci>
-						<Address>-793665536</Address>
-						<Size>4096</Size>
-						<BusNo>0</BusNo>
-						<SlotNo>126</SlotNo>
-						<VendorId>32902</VendorId>
-						<DeviceId>3850</DeviceId>
-					</Pci>
+					<Pnp>
+						<DeviceDesc>PCI\TcI8254x1</DeviceDesc>
+						<DeviceName>PCI\TCI8254X1</DeviceName>
+						<DeviceData>0001057ce07e</DeviceData>
+					</Pnp>
 				</AddressInfo>
-				<Image Id="5" AddrType="1" ImageType="1">
-					<Name>Image</Name>
+				<Image Id="3" AddrType="1" ImageType="3">
+					<Name>Prozessabbild</Name>
 				</Image>
-				<Serial Baud="38400" Parity="1" StopBit="1" RsType="1" WaitTimeToShutdown="60" BufSize="4096" DataBit="8" Is16950="true" ComPortNo="99" Timeout="300"/>
+				<Ethernet DeviceDesc="PCI\TcI8254x1"/>
+				<Eap EapDeviceGuid="{D3E7C3FA-05D4-4CF0-975F-68CC701FE6A4}"/>
+			</Device>
+			<Device Id="5" DevType="111" DevFlags="#x0003" AmsPort="28677" AmsNetId="5.124.224.126.6.1" RemoteName="Gerät 5 (EtherCAT)" InfoImageId="5">
+				<Name>Gerät 5 (EtherCAT)</Name>
+				<AddressInfo>
+					<Pnp>
+						<DeviceDesc>PCI\TcI8254x2</DeviceDesc>
+						<DeviceName>PCI\TCI8254X2</DeviceName>
+						<DeviceData>0001057ce07f</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<Image Id="4" AddrType="9" ImageType="3">
+					<Name>Prozessabbild</Name>
+				</Image>
+				<Box Id="13" Disabled="true" BoxType="9099">
+					<Name>Box 13 (P00000201 R0C000002)</Name>
+					<ImageId>65</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0e08" CycleMBoxPolling="true" CoeType="1" FoeType="1" VendorId="#x000022d2" ProductCode="#x00000201" RevisionNo="#x0c000002" InfoDataAddr="true" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="" Desc="P00000201 R0C000002" PortABoxInfo="#x00ffffff">
+						<SyncMan>001000042600010001000000000000000004001026010000</SyncMan>
+						<SyncMan>001400042200010002000000000000000004001422010000</SyncMan>
+						<BootStrapData>0010000400140004</BootStrapData>
+					</EtherCAT>
+				</Box>
+				<Box Id="14" Disabled="true" BoxType="9099">
+					<Name>Box 14 (P00000201 R0C000002)</Name>
+					<ImageId>65</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0e08" CycleMBoxPolling="true" CoeType="1" FoeType="1" VendorId="#x000022d2" ProductCode="#x00000201" RevisionNo="#x0c000002" InfoDataAddr="true" PortPhys="1" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="" Desc="P00000201 R0C000002" PortABoxInfo="#x00ffffff">
+						<SyncMan>001000042600010001000000000000000004001026010000</SyncMan>
+						<SyncMan>001400042200010002000000000000000004001422010000</SyncMan>
+						<BootStrapData>0010000400140004</BootStrapData>
+					</EtherCAT>
+				</Box>
+				<EtherCAT/>
 			</Device>
 		</Io>
 	</Project>
