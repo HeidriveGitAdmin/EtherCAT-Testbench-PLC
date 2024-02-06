@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_EcMasterState" Id="{405fdbf8-f334-46b0-bbce-28e2b07965a9}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_EcMasterState
+
+VAR CONSTANT
+	sNetId           : T_AmsNetId:= '5.124.224.126.6.1';
+END_VAR
+
+VAR
+    fbReqMasterState : FB_EcReqMasterState;
+    bExecute         : BOOL;
+	tTimeout : TIME := DEFAULT_ADS_TIMEOUT;
+    state            : WORD := EC_DEVICE_STATE_INIT;
+END_VAR
+
+VAR_OUTPUT
+    bError           : BOOL;
+    nErrId           : UDINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=state);
+bError := fbReqMasterState.bError;
+nErrId := fbReqMasterState.nErrId;]]></ST>
+    </Implementation>
+    <Method Name="SetInit" Id="{29b01c97-b07f-4ad5-9efe-e980c6fe8cda}">
+      <Declaration><![CDATA[METHOD SetInit : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:=EC_DEVICE_STATE_INIT);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetOp" Id="{21eda505-3e42-4f35-947a-1d0981096251}">
+      <Declaration><![CDATA[METHOD SetOp : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:=EC_DEVICE_STATE_OP);]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_EcMasterState">
+      <LineId Id="17" Count="1" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EcMasterState.SetInit">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EcMasterState.SetOp">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

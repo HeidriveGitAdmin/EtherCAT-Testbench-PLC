@@ -234,6 +234,9 @@ VAR
 	bSwitchOffPowerSupply			: BOOL;
 	
 	bGotAnswer : BOOL := FALSE;
+	
+	statusword_node_13 AT %I* : UINT;
+	statusword_node_14 AT %I* : UINT;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbLightControlLeft (bTrig1 := bA84_1,  //weiß
