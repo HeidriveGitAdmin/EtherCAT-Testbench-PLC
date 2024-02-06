@@ -17,40 +17,52 @@ END_VAR
 VAR_OUTPUT
     bError           : BOOL;
     nErrId           : UDINT;
+	
+	//fertig bit
+	//erfolg bit
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[//fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=state);
-bError := fbReqMasterState.bError;
-nErrId := fbReqMasterState.nErrId;]]></ST>
+
+//TODO state zurückgeben und vergleichen]]></ST>
     </Implementation>
     <Method Name="SetInit" Id="{29b01c97-b07f-4ad5-9efe-e980c6fe8cda}">
-      <Declaration><![CDATA[METHOD SetInit : BOOL
+      <Declaration><![CDATA[METHOD SetInit
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:=EC_DEVICE_STATE_INIT);]]></ST>
+        <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:=EC_DEVICE_STATE_INIT);
+bError := fbReqMasterState.bError;
+nErrId := fbReqMasterState.nErrId;]]></ST>
       </Implementation>
     </Method>
     <Method Name="SetOp" Id="{21eda505-3e42-4f35-947a-1d0981096251}">
-      <Declaration><![CDATA[METHOD SetOp : BOOL
+      <Declaration><![CDATA[METHOD SetOp
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:=EC_DEVICE_STATE_OP);]]></ST>
+        <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:=EC_DEVICE_STATE_OP);
+bError := fbReqMasterState.bError;
+nErrId := fbReqMasterState.nErrId;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_EcMasterState">
-      <LineId Id="17" Count="1" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="58" Count="0" />
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="FB_EcMasterState.SetInit">
       <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="10" Count="0" />
     </LineIds>
     <LineIds Name="FB_EcMasterState.SetOp">
       <LineId Id="5" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

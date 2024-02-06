@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_SlaveName" Id="{eb3d0e44-57cf-4ab5-989e-65f6df6260f4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SlaveName
+
+VAR CONSTANT
+	sNetId     : T_AmsNetId := '5.124.224.126.6.1';
+	nSlaveAddr : UINT := 1001;
+    nIndex     : WORD := 16#20F2; //assigned name
+    nSubIndex  : BYTE := 0;
+END_VAR
+
+VAR
+	fbSdoRead  : FB_EcCoESdoRead;
+    bExecute   : BOOL;
+    bError     : BOOL;
+    nErrId     : UDINT;
+END_VAR
+
+VAR_OUTPUT
+	SlaveName : STRING;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbSdoRead(sNetId:= sNetId,nSlaveAddr :=nSlaveAddr, nIndex:=nIndex, 
+	nSubIndex :=nSubIndex, pDstBuf:= ADR(SlaveName), cbBufLen:=SIZEOF(SlaveName),bExecute:=bExecute);]]></ST>
+    </Implementation>
+    <Method Name="Get" Id="{443a45fa-4536-457b-a4e2-8f178baeebff}">
+      <Declaration><![CDATA[METHOD Get : BOOL
+VAR_INPUT
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbSdoRead(sNetId:= sNetId,nSlaveAddr :=nSlaveAddr, nIndex:=nIndex, nSubIndex :=nSubIndex, pDstBuf:= ADR(SlaveName), cbBufLen:=SIZEOF(SlaveName),bExecute:=TRUE);
+bError:=fbSdoRead.bError;
+nErrId:=fbSdoRead.nErrId;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_SlaveName">
+      <LineId Id="9" Count="0" />
+      <LineId Id="33" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SlaveName.Get">
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="6" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

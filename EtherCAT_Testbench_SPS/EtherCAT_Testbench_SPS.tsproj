@@ -1,25 +1,5 @@
 <?xml version="1.0"?>
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.29">
-	<DataTypes>
-		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000001}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..0] OF BIT</Name>
-			<BitSize>1</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
-			<ArrayInfo>
-				<LBound>0</LBound>
-				<Elements>1</Elements>
-			</ArrayInfo>
-		</DataType>
-		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000006}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..5] OF BIT</Name>
-			<BitSize>6</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
-			<ArrayInfo>
-				<LBound>0</LBound>
-				<Elements>6</Elements>
-			</ArrayInfo>
-		</DataType>
-	</DataTypes>
 	<ImageDatas>
 		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ff808080808080808080808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1001">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
@@ -199,6 +179,10 @@
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
 						<Var>
+							<Name>MAIN.bA81_1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.nA71_1</Name>
 							<Type>UINT</Type>
 						</Var>
@@ -213,10 +197,6 @@
 						<Var>
 							<Name>MAIN.nA71_7</Name>
 							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.bA81_1</Name>
-							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.bA81_2</Name>
@@ -463,13 +443,13 @@
 					<Name>Image</Name>
 				</Image>
 				<Box Id="1" BoxType="9099">
-					<Name>Term 1 (EK1200)</Name>
+					<Name>Klemme 13 (EK1200)</Name>
 					<ImageId>1000</ImageId>
-					<EtherCAT PdiType="#x0100" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04b02c52" RevisionNo="#x00001388" InfoDataState="false" PortPhys="49" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1200-5000 EtherCAT Power supply (2A E-Bus)" Desc="EK1200" PortABoxInfo="#x00ffffff"/>
+					<EtherCAT PdiType="#x0100" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04b02c52" RevisionNo="#x00001388" InfoDataState="false" PortPhys="49" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1200-5000 EtherCAT Netzteil (2A E-Bus)" Desc="EK1200" PortABoxInfo="#x00ffffff"/>
 					<Box Id="2" BoxType="9099">
-						<Name>Term 2 (EL1018)</Name>
+						<Name>Klemme 2 (EL1018)</Name>
 						<ImageId>7</ImageId>
-						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03fa3052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1018 8Ch. Dig. Input 24V, 10µs" Desc="EL1018" PortABoxInfo="#x01000001">
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03fa3052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1018 8K. Dig. Eingang 24V, 10µs" Desc="EL1018" PortABoxInfo="#x01000001">
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
@@ -515,9 +495,9 @@
 						</EtherCAT>
 					</Box>
 					<Box Id="3" BoxType="9099">
-						<Name>Term 3 (EL1018)</Name>
+						<Name>Klemme 3 (EL1018)</Name>
 						<ImageId>7</ImageId>
-						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03fa3052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1018 8Ch. Dig. Input 24V, 10µs" Desc="EL1018" PortABoxInfo="#x01000002">
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03fa3052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1018 8K. Dig. Eingang 24V, 10µs" Desc="EL1018" PortABoxInfo="#x01000002">
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
@@ -563,9 +543,9 @@
 						</EtherCAT>
 					</Box>
 					<Box Id="4" BoxType="9099">
-						<Name>Term 4 (EL1018)</Name>
+						<Name>Klemme 4 (EL1018)</Name>
 						<ImageId>7</ImageId>
-						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03fa3052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1018 8Ch. Dig. Input 24V, 10µs" Desc="EL1018" PortABoxInfo="#x01000003">
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03fa3052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1018 8K. Dig. Eingang 24V, 10µs" Desc="EL1018" PortABoxInfo="#x01000003">
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
@@ -611,9 +591,9 @@
 						</EtherCAT>
 					</Box>
 					<Box Id="5" BoxType="9099">
-						<Name>Term 5 (EL1018)</Name>
+						<Name>Klemme 5 (EL1018)</Name>
 						<ImageId>7</ImageId>
-						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03fa3052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1018 8Ch. Dig. Input 24V, 10µs" Desc="EL1018" PortABoxInfo="#x01000004">
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03fa3052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1018 8K. Dig. Eingang 24V, 10µs" Desc="EL1018" PortABoxInfo="#x01000004">
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
@@ -659,9 +639,9 @@
 						</EtherCAT>
 					</Box>
 					<Box Id="6" BoxType="9099" BoxFlags="#x00000020">
-						<Name>Term 6 (EL4104)</Name>
+						<Name>Klemme 6 (EL4104)</Name>
 						<ImageId>1001</ImageId>
-						<EtherCAT SlaveType="2" PdiType="#x0c05" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="3" FoeType="1" VendorId="#x00000002" ProductCode="#x10083052" RevisionNo="#x03fc0000" InfoDataAddr="true" TimeoutMailbox2="2000" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL4104 4Ch. Ana. Output 0-10V, 16bit" Desc="EL4104" PortABoxInfo="#x01000005">
+						<EtherCAT SlaveType="2" PdiType="#x0c05" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="3" FoeType="1" VendorId="#x00000002" ProductCode="#x10083052" RevisionNo="#x03fc0000" InfoDataAddr="true" TimeoutMailbox2="2000" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL4104 4Ch. Ana. Ausgang 0-10V, 16bit" Desc="EL4104" PortABoxInfo="#x01000005">
 							<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
 							<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
 							<SyncMan>001108002400010003000000000000000800001124010000</SyncMan>
@@ -697,8 +677,8 @@
 							<CoeProfile ProfileNo="26219401"/>
 						</EtherCAT>
 					</Box>
-					<Box Id="7" BoxType="9099" BoxFlags="#x00000020">
-						<Name>Term 7 (EL3064)</Name>
+					<Box Id="7" BoxType="9099">
+						<Name>Klemme 7 (EL3064)</Name>
 						<ImageId>1002</ImageId>
 						<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="7" FoeType="1" VendorId="#x00000002" ProductCode="#x0bf83052" RevisionNo="#x00150000" InfoDataAddr="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL3064 4Ch. Ana. Input 0-10V" Desc="EL3064" PortABoxInfo="#x01000006">
 							<SyncMan>001080002600010001000000000000008000001026010000</SyncMan>
@@ -725,10 +705,10 @@
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
-									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
+									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
-									<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+									<Type>BIT6</Type>
 								</Entry>
 								<Entry Name="Status__TxPDO State" Index="#x6000" Sub="#x0f">
 									<Type>BIT</Type>
@@ -762,10 +742,10 @@
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
-									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
+									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
-									<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+									<Type>BIT6</Type>
 								</Entry>
 								<Entry Name="Status__TxPDO State" Index="#x6010" Sub="#x0f">
 									<Type>BIT</Type>
@@ -799,10 +779,10 @@
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
-									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
+									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
-									<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+									<Type>BIT6</Type>
 								</Entry>
 								<Entry Name="Status__TxPDO State" Index="#x6020" Sub="#x0f">
 									<Type>BIT</Type>
@@ -836,10 +816,10 @@
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
-									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
+									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
-									<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+									<Type>BIT6</Type>
 								</Entry>
 								<Entry Name="Status__TxPDO State" Index="#x6030" Sub="#x0f">
 									<Type>BIT</Type>
@@ -858,8 +838,8 @@
 							</Pdo>
 						</EtherCAT>
 					</Box>
-					<Box Id="8" BoxType="9099" BoxFlags="#x00000020">
-						<Name>Term 8 (EL2068)</Name>
+					<Box Id="8" BoxType="9099">
+						<Name>Klemme 8 (EL2068)</Name>
 						<ImageId>1003</ImageId>
 						<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x08143052" RevisionNo="#x00100000" InfoDataAddr="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2068 8Ch. Dig Output 24V, 0.5A" Desc="EL2068" PortABoxInfo="#x01000007">
 							<SyncMan>001080002600010001000000000000008000001026010000</SyncMan>
@@ -870,90 +850,90 @@
 							<Fmmu>0000000000000000001200010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.01" Index="#x1a00" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.01" Index="#x1a00" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6000" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.02" Index="#x1a10" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.02" Index="#x1a10" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6010" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.03" Index="#x1a20" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.03" Index="#x1a20" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6020" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.04" Index="#x1a30" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.04" Index="#x1a30" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6030" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.05" Index="#x1a40" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.05" Index="#x1a40" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6040" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.06" Index="#x1a50" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.06" Index="#x1a50" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6050" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.07" Index="#x1a60" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.07" Index="#x1a60" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6060" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.08" Index="#x1a70" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.08" Index="#x1a70" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6070" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.01" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.01" Index="#x1600" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.02" Index="#x1610" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.02" Index="#x1610" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.03" Index="#x1620" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.03" Index="#x1620" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.04" Index="#x1630" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.04" Index="#x1630" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.05" Index="#x1640" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.05" Index="#x1640" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7040" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.06" Index="#x1650" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.06" Index="#x1650" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7050" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.07" Index="#x1660" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.07" Index="#x1660" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7060" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.08" Index="#x1670" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.08" Index="#x1670" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7070" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 						</EtherCAT>
 					</Box>
-					<Box Id="9" BoxType="9099" BoxFlags="#x00000020">
-						<Name>Term 9 (EL2068)</Name>
+					<Box Id="9" BoxType="9099">
+						<Name>Klemme 9 (EL2068)</Name>
 						<ImageId>1003</ImageId>
 						<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x08143052" RevisionNo="#x00100000" InfoDataAddr="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2068 8Ch. Dig Output 24V, 0.5A" Desc="EL2068" PortABoxInfo="#x01000008">
 							<SyncMan>001080002600010001000000000000008000001026010000</SyncMan>
@@ -964,90 +944,90 @@
 							<Fmmu>0000000000000000001200010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.01" Index="#x1a00" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.01" Index="#x1a00" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6000" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.02" Index="#x1a10" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.02" Index="#x1a10" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6010" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.03" Index="#x1a20" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.03" Index="#x1a20" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6020" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.04" Index="#x1a30" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.04" Index="#x1a30" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6030" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.05" Index="#x1a40" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.05" Index="#x1a40" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6040" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.06" Index="#x1a50" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.06" Index="#x1a50" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6050" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.07" Index="#x1a60" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.07" Index="#x1a60" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6060" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.08" Index="#x1a70" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.08" Index="#x1a70" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6070" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.01" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.01" Index="#x1600" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.02" Index="#x1610" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.02" Index="#x1610" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.03" Index="#x1620" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.03" Index="#x1620" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.04" Index="#x1630" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.04" Index="#x1630" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.05" Index="#x1640" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.05" Index="#x1640" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7040" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.06" Index="#x1650" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.06" Index="#x1650" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7050" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.07" Index="#x1660" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.07" Index="#x1660" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7060" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.08" Index="#x1670" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.08" Index="#x1670" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7070" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 						</EtherCAT>
 					</Box>
-					<Box Id="10" BoxType="9099" BoxFlags="#x00000020">
-						<Name>Term 10 (EL2068)</Name>
+					<Box Id="10" BoxType="9099">
+						<Name>Klemme 10 (EL2068)</Name>
 						<ImageId>1003</ImageId>
 						<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x08143052" RevisionNo="#x00100000" InfoDataAddr="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2068 8Ch. Dig Output 24V, 0.5A" Desc="EL2068" PortABoxInfo="#x01000009">
 							<SyncMan>001080002600010001000000000000008000001026010000</SyncMan>
@@ -1058,90 +1038,90 @@
 							<Fmmu>0000000000000000001200010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.01" Index="#x1a00" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.01" Index="#x1a00" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6000" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.02" Index="#x1a10" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.02" Index="#x1a10" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6010" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.03" Index="#x1a20" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.03" Index="#x1a20" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6020" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.04" Index="#x1a30" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.04" Index="#x1a30" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6030" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.05" Index="#x1a40" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.05" Index="#x1a40" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6040" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.06" Index="#x1a50" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.06" Index="#x1a50" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6050" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.07" Index="#x1a60" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.07" Index="#x1a60" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6060" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.08" Index="#x1a70" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.08" Index="#x1a70" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6070" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.01" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.01" Index="#x1600" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.02" Index="#x1610" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.02" Index="#x1610" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.03" Index="#x1620" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.03" Index="#x1620" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.04" Index="#x1630" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.04" Index="#x1630" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.05" Index="#x1640" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.05" Index="#x1640" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7040" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.06" Index="#x1650" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.06" Index="#x1650" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7050" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.07" Index="#x1660" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.07" Index="#x1660" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7060" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.08" Index="#x1670" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.08" Index="#x1670" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7070" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 						</EtherCAT>
 					</Box>
-					<Box Id="11" BoxType="9099" BoxFlags="#x00000020">
-						<Name>Term 11 (EL2068)</Name>
+					<Box Id="11" BoxType="9099">
+						<Name>Klemme 11 (EL2068)</Name>
 						<ImageId>1003</ImageId>
 						<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x08143052" RevisionNo="#x00100000" InfoDataAddr="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2068 8Ch. Dig Output 24V, 0.5A" Desc="EL2068" PortABoxInfo="#x0100000a">
 							<SyncMan>001080002600010001000000000000008000001026010000</SyncMan>
@@ -1152,82 +1132,82 @@
 							<Fmmu>0000000000000000001200010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.01" Index="#x1a00" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.01" Index="#x1a00" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6000" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.02" Index="#x1a10" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.02" Index="#x1a10" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6010" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.03" Index="#x1a20" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.03" Index="#x1a20" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6020" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.04" Index="#x1a30" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.04" Index="#x1a30" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6030" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.05" Index="#x1a40" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.05" Index="#x1a40" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6040" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.06" Index="#x1a50" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.06" Index="#x1a50" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6050" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.07" Index="#x1a60" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.07" Index="#x1a60" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6060" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS TxPDO-Map Inputs Ch.08" Index="#x1a70" Flags="#x0011" SyncMan="3">
+							<Pdo Name="DOS TxPDO-Map Inputs Ch.08" Index="#x1a70" Flags="#x0013" SyncMan="3">
 								<Entry Name="Overload" Index="#x6070" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.01" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.01" Index="#x1600" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.02" Index="#x1610" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.02" Index="#x1610" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.03" Index="#x1620" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.03" Index="#x1620" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.04" Index="#x1630" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.04" Index="#x1630" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.05" Index="#x1640" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.05" Index="#x1640" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7040" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.06" Index="#x1650" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.06" Index="#x1650" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7050" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.07" Index="#x1660" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.07" Index="#x1660" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7060" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="DOS RxPDO-Map Outputs Ch.08" Index="#x1670" InOut="1" Flags="#x0011" SyncMan="2">
+							<Pdo Name="DOS RxPDO-Map Outputs Ch.08" Index="#x1670" InOut="1" Flags="#x0013" SyncMan="2">
 								<Entry Name="Output" Index="#x7070" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
@@ -1235,9 +1215,9 @@
 						</EtherCAT>
 					</Box>
 					<Box Id="12" BoxType="9099">
-						<Name>Term 12 (EL9011)</Name>
+						<Name>Klemme 24 (EL9011)</Name>
 						<ImageId>1004</ImageId>
-						<EtherCAT CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x23333050" InfoDataState="false" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9011 End Terminal" Desc="EL9011" PortABoxInfo="#x0100000b"/>
+						<EtherCAT CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x23333050" InfoDataState="false" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9011 Endklemme" Desc="EL9011" PortABoxInfo="#x0100000b"/>
 					</Box>
 				</Box>
 				<EtherCAT/>
@@ -1517,94 +1497,4 @@
 			</Device>
 		</Io>
 	</Project>
-	<Mappings>
-		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
-		<MappingInfo Identifier="{00000000-2001-0850-0020-500840000403}" Id="#x02030020"/>
-		<OwnerA Name="TIPC^SPS_Program^SPS_Program Instance">
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL2068)">
-				<Link VarA="PlcTask Outputs^MAIN.bA83_1" VarB="DOS RxPDO-Map Outputs Ch.01^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA83_2" VarB="DOS RxPDO-Map Outputs Ch.03^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA83_3" VarB="DOS RxPDO-Map Outputs Ch.05^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA83_4" VarB="DOS RxPDO-Map Outputs Ch.07^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA83_5" VarB="DOS RxPDO-Map Outputs Ch.02^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA83_6" VarB="DOS RxPDO-Map Outputs Ch.04^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA83_7" VarB="DOS RxPDO-Map Outputs Ch.06^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA83_8" VarB="DOS RxPDO-Map Outputs Ch.08^Output" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL2068)">
-				<Link VarA="PlcTask Outputs^MAIN.bA84_1" VarB="DOS RxPDO-Map Outputs Ch.01^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA84_2" VarB="DOS RxPDO-Map Outputs Ch.02^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA84_3" VarB="DOS RxPDO-Map Outputs Ch.03^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA84_4" VarB="DOS RxPDO-Map Outputs Ch.04^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA84_5" VarB="DOS RxPDO-Map Outputs Ch.05^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA84_6" VarB="DOS RxPDO-Map Outputs Ch.06^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA84_8" VarB="DOS RxPDO-Map Outputs Ch.08^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA85_7" VarB="DOS RxPDO-Map Outputs Ch.07^Output" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1018)">
-				<Link VarA="PlcTask Inputs^MAIN.bA61_1" VarB="Channel 1^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA61_2" VarB="Channel 3^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA61_3" VarB="Channel 5^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA61_4" VarB="Channel 7^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA61_5" VarB="Channel 2^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA61_6" VarB="Channel 4^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA61_7" VarB="Channel 6^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA61_8" VarB="Channel 8^Input" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1018)">
-				<Link VarA="PlcTask Inputs^MAIN.bA62_1" VarB="Channel 1^Input" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1018)">
-				<Link VarA="PlcTask Inputs^MAIN.bA63_1" VarB="Channel 1^Input" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1018)">
-				<Link VarA="PlcTask Inputs^MAIN.bA64_1" VarB="Channel 1^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA64_2" VarB="Channel 3^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA64_3" VarB="Channel 5^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA64_4" VarB="Channel 7^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA64_5" VarB="Channel 2^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA64_6" VarB="Channel 4^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA64_7" VarB="Channel 6^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bA64_8" VarB="Channel 8^Input" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL4104)">
-				<Link VarA="PlcTask Outputs^MAIN.nA71_1" VarB="AO Output Channel 1^Analog output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.nA71_3" VarB="AO Output Channel 3^Analog output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.nA71_5" VarB="AO Output Channel 2^Analog output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.nA71_7" VarB="AO Output Channel 4^Analog output" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 7 (EL3064)">
-				<Link VarA="PlcTask Inputs^MAIN.nA72_1" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.nA72_3" VarB="AI Standard Channel 3^Value" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.nA72_5" VarB="AI Standard Channel 2^Value" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.nA72_7" VarB="AI Standard Channel 4^Value" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL2068)">
-				<Link VarA="PlcTask Outputs^MAIN.bA81_1" VarB="DOS RxPDO-Map Outputs Ch.01^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA81_2" VarB="DOS RxPDO-Map Outputs Ch.03^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA81_3" VarB="DOS RxPDO-Map Outputs Ch.05^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA81_4" VarB="DOS RxPDO-Map Outputs Ch.07^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA81_5" VarB="DOS RxPDO-Map Outputs Ch.02^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA81_6" VarB="DOS RxPDO-Map Outputs Ch.04^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA81_7" VarB="DOS RxPDO-Map Outputs Ch.06^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA81_8" VarB="DOS RxPDO-Map Outputs Ch.08^Output" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL2068)">
-				<Link VarA="PlcTask Outputs^MAIN.bA82_1" VarB="DOS RxPDO-Map Outputs Ch.01^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA82_2" VarB="DOS RxPDO-Map Outputs Ch.03^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA82_3" VarB="DOS RxPDO-Map Outputs Ch.05^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA82_4" VarB="DOS RxPDO-Map Outputs Ch.07^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA82_5" VarB="DOS RxPDO-Map Outputs Ch.02^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA82_6" VarB="DOS RxPDO-Map Outputs Ch.04^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA82_7" VarB="DOS RxPDO-Map Outputs Ch.06^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^MAIN.bA82_8" VarB="DOS RxPDO-Map Outputs Ch.08^Output" AutoLink="true"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 5 (EtherCAT)^Drive 13 (SOMANET Node)">
-				<Link VarA="PlcTask Inputs^MAIN.statusword_node_13" VarB="TxPDO Mapping 1^Statusword"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 5 (EtherCAT)^Drive 14 (SOMANET Node)">
-				<Link VarA="PlcTask Inputs^MAIN.statusword_node_14" VarB="TxPDO Mapping 1^Statusword"/>
-			</OwnerB>
-		</OwnerA>
-	</Mappings>
 </TcSmProject>

@@ -35,6 +35,9 @@
     <Compile Include="POUs\FB_PowerSupply.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\FB_SlaveName.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\FB_Start.TcPOU">
       <SubType>Code</SubType>
     </Compile>
