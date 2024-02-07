@@ -82,7 +82,7 @@ END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF NOT bBusy THEN
 	bExecute := TRUE;
-	fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=EC_DEVICE_STATE_OP);
+	fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=EC_DEVICE_STATE_PREOP);
 	bExecute := FALSE;
 	bError := fbReqMasterState.bError;
 	nErrId := fbReqMasterState.nErrId;
@@ -95,6 +95,16 @@ END_VAR]]></Declaration>
 ELSE
 	EnableMaster := FALSE;
 END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_init" Id="{56ada799-e5bc-4eed-8559-e008224ba9a3}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	sNetId           : T_AmsNetId;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.sNetId := sNetId;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_EcMasterState">
@@ -130,6 +140,9 @@ END_IF]]></ST>
       <LineId Id="29" Count="0" />
       <LineId Id="32" Count="4" />
       <LineId Id="26" Count="2" />
+    </LineIds>
+    <LineIds Name="FB_EcMasterState.FB_init">
+      <LineId Id="7" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

@@ -8,7 +8,7 @@
 		<ImageData Id="1004">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1005">424de6000000000000007600000028000000100000000e00000001000400000000007000000000000000000000001000000010000000520fe4005513e4006d34e8007a47ea008b5eed009870ef00ae8ff200b498f300bea4f500cab6f700d4c3f80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000333333333333100099999999999a610011124544444691000017988888883000001975555555555500026777777777770000000000000000000000000000000000000000000000000000000000000000</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{A094D581-BFD3-4E84-8D04-B933F359E14D}" TargetNetId="5.124.224.126.1.1" ShowHideConfigurations="#x106">
+	<Project ProjectGUID="{A094D581-BFD3-4E84-8D04-B933F359E14D}" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
@@ -412,7 +412,7 @@
 					</Slot>
 				</CCat>
 			</Device>
-			<Device Id="2" DevType="111" DevFlags="#x0003" AmsPort="28674" AmsNetId="5.124.224.126.3.1" RemoteName="Device 2 (EtherCAT)" InfoImageId="2">
+			<Device Id="2" DevType="111" DevFlags="#x0003" AmsPort="28674" AmsNetId="10.200.20.140.3.1" RemoteName="Device 2 (EtherCAT)" InfoImageId="2">
 				<Name>Device 2 (EtherCAT)</Name>
 				<AddressInfo>
 					<Ccat>
@@ -1222,7 +1222,7 @@
 				</Box>
 				<EtherCAT/>
 			</Device>
-			<Device Id="3" DevType="112" AmsPort="28675" AmsNetId="5.124.224.126.4.1" RemoteName="Gerät 3 (EtherCAT Automation Protocol)">
+			<Device Id="3" DevType="112" AmsPort="28675" AmsNetId="10.200.20.140.4.1" RemoteName="Gerät 3 (EtherCAT Automation Protocol)">
 				<Name>Gerät 3 (EtherCAT Automation Protocol)</Name>
 				<AddressInfo>
 					<Pnp>
@@ -1237,7 +1237,7 @@
 				<Ethernet DeviceDesc="PCI\TcI8254x1"/>
 				<Eap EapDeviceGuid="{D3E7C3FA-05D4-4CF0-975F-68CC701FE6A4}"/>
 			</Device>
-			<Device Id="5" DevType="111" DevFlags="#x0003" AmsPort="28677" AmsNetId="5.124.224.126.6.1" RemoteName="Gerät 5 (EtherCAT)" InfoImageId="5">
+			<Device Id="5" DevType="111" DevFlags="#x0003" AmsPort="28677" AmsNetId="10.200.20.140.6.1" RemoteName="Gerät 5 (EtherCAT)" InfoImageId="5">
 				<Name>Gerät 5 (EtherCAT)</Name>
 				<AddressInfo>
 					<Pnp>

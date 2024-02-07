@@ -210,8 +210,11 @@ VAR
 	fbWatchPhotoelectricBarrierLeft	: FB_WatchPhotoelectricBarrier;
 	fbSTOLeft						: FB_LogicSupply;
 	
-	fbSlaveName : FB_SlaveName;
-	result : STRING(35);
+	fbEcMasterStateLeft : FB_EcMasterState(sNetId := '5.124.224.126.6.1');
+	fbEcMasterStateRight : FB_EcMasterState(sNetId := '5.124.224.126.6.1');
+	
+	fbSlaveNameLeft : FB_SlaveName(sNetId := '5.124.224.126.6.1');
+	fbSlaveNameRight : FB_SlaveName(sNetId := '5.124.224.126.6.1');
 END_VAR
 
 VAR
@@ -347,11 +350,7 @@ IF bSwitchOffPowerSupply THEN
 	bSwitchOffPowerSupply := FALSE;
 END_IF
 
-IF bReadName THEN
-	fbSlaveName.Get();
-	bReadName := FALSE;
-END_IF
-fbSlaveName();
+
 
 ]]></ST>
     </Implementation>
@@ -439,10 +438,7 @@ fbSlaveName();
       <LineId Id="1348" Count="0" />
       <LineId Id="1350" Count="0" />
       <LineId Id="1349" Count="0" />
-      <LineId Id="2758" Count="1" />
-      <LineId Id="2762" Count="0" />
-      <LineId Id="2767" Count="0" />
-      <LineId Id="2763" Count="0" />
+      <LineId Id="2758" Count="0" />
       <LineId Id="2770" Count="0" />
       <LineId Id="2768" Count="0" />
       <LineId Id="2757" Count="0" />
