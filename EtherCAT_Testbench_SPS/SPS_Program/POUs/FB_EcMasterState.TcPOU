@@ -3,12 +3,15 @@
   <POU Name="FB_EcMasterState" Id="{405fdbf8-f334-46b0-bbce-28e2b07965a9}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_EcMasterState
 
+VAR_INPUT
+	sNetId           : T_AmsNetId; //:= '5.124.224.126.6.1';
+END_VAR
+
 VAR
-	sNetId           : T_AmsNetId:= '5.124.224.126.6.1';
     fbReqMasterState : FB_EcReqMasterState;
     bExecute         : BOOL;
 	tTimeout		 : TIME := DEFAULT_ADS_TIMEOUT;
-    state            : WORD := EC_DEVICE_STATE_INIT;
+    state            : WORD;;
 	bBusy  			 : BOOL;
 END_VAR
 
@@ -45,7 +48,8 @@ END_IF
 ]]></ST>
     </Implementation>
     <Method Name="DisableMaster" Id="{29b01c97-b07f-4ad5-9efe-e980c6fe8cda}">
-      <Declaration><![CDATA[METHOD DisableMaster : BOOL
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD DisableMaster : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
@@ -53,16 +57,23 @@ END_VAR
         <ST><![CDATA[IF NOT bBusy THEN
 	bExecute := TRUE;
 	fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=EC_DEVICE_STATE_INIT);
+	bExecute := FALSE;
 	bError := fbReqMasterState.bError;
 	nErrId := fbReqMasterState.nErrId;
 	bBusy := fbReqMasterState.bBusy;
+	
+	bStateChangeOccurred := FALSE; //reset
+	bStateChangeSuccsessful := FALSE; //reset
+	
+	DisableMaster := TRUE;
 ELSE
 	DisableMaster := FALSE;
 END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="EnableMaster" Id="{21eda505-3e42-4f35-947a-1d0981096251}">
-      <Declaration><![CDATA[METHOD EnableMaster : BOOL
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD EnableMaster : BOOL
 VAR_INPUT
 END_VAR
 
@@ -72,9 +83,15 @@ END_VAR]]></Declaration>
         <ST><![CDATA[IF NOT bBusy THEN
 	bExecute := TRUE;
 	fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=EC_DEVICE_STATE_OP);
+	bExecute := FALSE;
 	bError := fbReqMasterState.bError;
 	nErrId := fbReqMasterState.nErrId;
 	bBusy := fbReqMasterState.bBusy;
+	
+	bStateChangeOccurred := FALSE; //reset
+	bStateChangeSuccsessful := FALSE; //reset
+	
+	EnableMaster := TRUE;
 ELSE
 	EnableMaster := FALSE;
 END_IF]]></ST>
@@ -97,15 +114,21 @@ END_IF]]></ST>
     </LineIds>
     <LineIds Name="FB_EcMasterState.DisableMaster">
       <LineId Id="16" Count="0" />
-      <LineId Id="19" Count="2" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="21" Count="0" />
       <LineId Id="17" Count="0" />
       <LineId Id="24" Count="0" />
+      <LineId Id="27" Count="4" />
       <LineId Id="22" Count="1" />
       <LineId Id="18" Count="0" />
     </LineIds>
     <LineIds Name="FB_EcMasterState.EnableMaster">
-      <LineId Id="21" Count="4" />
+      <LineId Id="21" Count="2" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="24" Count="1" />
       <LineId Id="29" Count="0" />
+      <LineId Id="32" Count="4" />
       <LineId Id="26" Count="2" />
     </LineIds>
   </POU>

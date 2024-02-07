@@ -25,13 +25,15 @@ END_VAR]]></Declaration>
 	nSubIndex :=nSubIndex, pDstBuf:= ADR(SlaveName), cbBufLen:=SIZEOF(SlaveName), bExecute:=bExecute);]]></ST>
     </Implementation>
     <Method Name="CheckName" Id="{f4a354c5-32e4-4a35-a062-c82ab2378ff0}">
-      <Declaration><![CDATA[///returns true if RevSlaveName and SlaveName (read from drive) are equal
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
 METHOD CheckName : BOOL
 VAR_INPUT
 	RevSlaveName : STRING;
-END_VAR]]></Declaration>
+END_VAR
+]]></Declaration>
       <Implementation>
-        <ST><![CDATA[bExecute := TRUE;
+        <ST><![CDATA[///returns true if RevSlaveName and SlaveName (read from drive) are equal
+bExecute := TRUE;
 fbSdoRead(sNetId:= sNetId,nSlaveAddr :=nSlaveAddr, nIndex:=nIndex, 
 	nSubIndex :=nSubIndex, pDstBuf:= ADR(SlaveName), cbBufLen:=SIZEOF(SlaveName), bExecute:=bExecute);
 	
@@ -43,7 +45,8 @@ END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="Get" Id="{443a45fa-4536-457b-a4e2-8f178baeebff}">
-      <Declaration><![CDATA[METHOD Get : STRING
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD Get : STRING
 VAR_INPUT
 	
 END_VAR
@@ -61,6 +64,7 @@ Get := SlaveName;]]></ST>
       <LineId Id="33" Count="0" />
     </LineIds>
     <LineIds Name="FB_SlaveName.CheckName">
+      <LineId Id="22" Count="0" />
       <LineId Id="12" Count="3" />
       <LineId Id="5" Count="0" />
       <LineId Id="16" Count="0" />
