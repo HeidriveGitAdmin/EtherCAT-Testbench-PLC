@@ -3,66 +3,110 @@
   <POU Name="FB_EcMasterState" Id="{405fdbf8-f334-46b0-bbce-28e2b07965a9}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_EcMasterState
 
-VAR CONSTANT
-	sNetId           : T_AmsNetId:= '5.124.224.126.6.1';
-END_VAR
-
 VAR
+	sNetId           : T_AmsNetId:= '5.124.224.126.6.1';
     fbReqMasterState : FB_EcReqMasterState;
     bExecute         : BOOL;
-	tTimeout : TIME := DEFAULT_ADS_TIMEOUT;
+	tTimeout		 : TIME := DEFAULT_ADS_TIMEOUT;
     state            : WORD := EC_DEVICE_STATE_INIT;
+	bBusy  			 : BOOL;
 END_VAR
 
 VAR_OUTPUT
     bError           : BOOL;
     nErrId           : UDINT;
-	
-	//fertig bit
-	//erfolg bit
+
+	bStateChangeSuccsessful : BOOL;//fertig bit
+	bStateChangeOccurred : BOOL; //erfolgt bit
+END_VAR
+
+//other function blocks
+VAR
+	fTrig			: F_Trig;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[//fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=state);
+      <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=EC_DEVICE_STATE_INIT);
+bError := fbReqMasterState.bError;
+nErrId := fbReqMasterState.nErrId;
+bBusy := fbReqMasterState.bBusy;
 
-//TODO state zurückgeben und vergleichen]]></ST>
+fTrig(CLK := bBusy);
+
+//wenn nicht mehr bussy dann bStateChangeOccured / succsess
+IF fTrig.Q AND NOT bError THEN
+	bStateChangeOccurred := TRUE;
+	bStateChangeSuccsessful := TRUE;
+ELSIF fTrig.Q AND NOT bError THEN
+	bStateChangeOccurred := TRUE;
+	bStateChangeSuccsessful := FALSE;
+END_IF
+
+]]></ST>
     </Implementation>
-    <Method Name="SetInit" Id="{29b01c97-b07f-4ad5-9efe-e980c6fe8cda}">
-      <Declaration><![CDATA[METHOD SetInit
+    <Method Name="DisableMaster" Id="{29b01c97-b07f-4ad5-9efe-e980c6fe8cda}">
+      <Declaration><![CDATA[METHOD DisableMaster : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:=EC_DEVICE_STATE_INIT);
-bError := fbReqMasterState.bError;
-nErrId := fbReqMasterState.nErrId;]]></ST>
+        <ST><![CDATA[IF NOT bBusy THEN
+	bExecute := TRUE;
+	fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=EC_DEVICE_STATE_INIT);
+	bError := fbReqMasterState.bError;
+	nErrId := fbReqMasterState.nErrId;
+	bBusy := fbReqMasterState.bBusy;
+ELSE
+	DisableMaster := FALSE;
+END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="SetOp" Id="{21eda505-3e42-4f35-947a-1d0981096251}">
-      <Declaration><![CDATA[METHOD SetOp
+    <Method Name="EnableMaster" Id="{21eda505-3e42-4f35-947a-1d0981096251}">
+      <Declaration><![CDATA[METHOD EnableMaster : BOOL
 VAR_INPUT
 END_VAR
-]]></Declaration>
+
+VAR
+END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:=EC_DEVICE_STATE_OP);
-bError := fbReqMasterState.bError;
-nErrId := fbReqMasterState.nErrId;]]></ST>
+        <ST><![CDATA[IF NOT bBusy THEN
+	bExecute := TRUE;
+	fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=EC_DEVICE_STATE_OP);
+	bError := fbReqMasterState.bError;
+	nErrId := fbReqMasterState.nErrId;
+	bBusy := fbReqMasterState.bBusy;
+ELSE
+	EnableMaster := FALSE;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_EcMasterState">
-      <LineId Id="17" Count="0" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="88" Count="0" />
       <LineId Id="58" Count="0" />
-      <LineId Id="9" Count="0" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="102" Count="0" />
+      <LineId Id="101" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="98" Count="1" />
+      <LineId Id="103" Count="3" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="97" Count="0" />
+      <LineId Id="83" Count="0" />
     </LineIds>
-    <LineIds Name="FB_EcMasterState.SetInit">
-      <LineId Id="9" Count="0" />
-      <LineId Id="11" Count="0" />
-      <LineId Id="10" Count="0" />
+    <LineIds Name="FB_EcMasterState.DisableMaster">
+      <LineId Id="16" Count="0" />
+      <LineId Id="19" Count="2" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="22" Count="1" />
+      <LineId Id="18" Count="0" />
     </LineIds>
-    <LineIds Name="FB_EcMasterState.SetOp">
-      <LineId Id="5" Count="0" />
-      <LineId Id="10" Count="0" />
-      <LineId Id="9" Count="0" />
+    <LineIds Name="FB_EcMasterState.EnableMaster">
+      <LineId Id="21" Count="4" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="26" Count="2" />
     </LineIds>
   </POU>
 </TcPlcObject>

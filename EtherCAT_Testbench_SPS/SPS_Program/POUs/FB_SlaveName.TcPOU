@@ -22,28 +22,56 @@ VAR_OUTPUT
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbSdoRead(sNetId:= sNetId,nSlaveAddr :=nSlaveAddr, nIndex:=nIndex, 
-	nSubIndex :=nSubIndex, pDstBuf:= ADR(SlaveName), cbBufLen:=SIZEOF(SlaveName),bExecute:=bExecute);]]></ST>
+	nSubIndex :=nSubIndex, pDstBuf:= ADR(SlaveName), cbBufLen:=SIZEOF(SlaveName), bExecute:=bExecute);]]></ST>
     </Implementation>
+    <Method Name="CheckName" Id="{f4a354c5-32e4-4a35-a062-c82ab2378ff0}">
+      <Declaration><![CDATA[///returns true if RevSlaveName and SlaveName (read from drive) are equal
+METHOD CheckName : BOOL
+VAR_INPUT
+	RevSlaveName : STRING;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bExecute := TRUE;
+fbSdoRead(sNetId:= sNetId,nSlaveAddr :=nSlaveAddr, nIndex:=nIndex, 
+	nSubIndex :=nSubIndex, pDstBuf:= ADR(SlaveName), cbBufLen:=SIZEOF(SlaveName), bExecute:=bExecute);
+	
+IF SlaveName = RevSlaveName THEN
+	CheckName := TRUE;
+ELSE
+	CheckName := FALSE;	
+END_IF]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="Get" Id="{443a45fa-4536-457b-a4e2-8f178baeebff}">
-      <Declaration><![CDATA[METHOD Get : BOOL
+      <Declaration><![CDATA[METHOD Get : STRING
 VAR_INPUT
 	
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbSdoRead(sNetId:= sNetId,nSlaveAddr :=nSlaveAddr, nIndex:=nIndex, nSubIndex :=nSubIndex, pDstBuf:= ADR(SlaveName), cbBufLen:=SIZEOF(SlaveName),bExecute:=TRUE);
-bError:=fbSdoRead.bError;
-nErrId:=fbSdoRead.nErrId;]]></ST>
+        <ST><![CDATA[bExecute := TRUE;
+fbSdoRead(sNetId:= sNetId,nSlaveAddr :=nSlaveAddr, nIndex:=nIndex, 
+	nSubIndex :=nSubIndex, pDstBuf:= ADR(SlaveName), cbBufLen:=SIZEOF(SlaveName),bExecute:=bExecute);
+	
+Get := SlaveName;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_SlaveName">
       <LineId Id="9" Count="0" />
       <LineId Id="33" Count="0" />
     </LineIds>
-    <LineIds Name="FB_SlaveName.Get">
+    <LineIds Name="FB_SlaveName.CheckName">
+      <LineId Id="12" Count="3" />
       <LineId Id="5" Count="0" />
-      <LineId Id="7" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="18" Count="1" />
+      <LineId Id="17" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SlaveName.Get">
+      <LineId Id="13" Count="0" />
+      <LineId Id="12" Count="0" />
       <LineId Id="6" Count="0" />
+      <LineId Id="18" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>
