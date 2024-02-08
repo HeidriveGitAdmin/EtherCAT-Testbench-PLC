@@ -210,6 +210,12 @@ VAR
 	fbWatchPhotoelectricBarrierLeft	: FB_WatchPhotoelectricBarrier;
 	fbSTOLeft						: FB_LogicSupply;
 	
+	fbOblacBoxLeft					: FB_LogicSupply;
+	fbOblacBoxRight					: FB_LogicSupply;
+	
+	fbReferenceControlerLeft		: FB_LogicSupply;
+	fbReferenceControlerRight		: FB_LogicSupply;
+	
 	fbEcMasterStateLeft : FB_EcMasterState(sNetId := '5.124.224.126.6.1');
 	fbEcMasterStateRight : FB_EcMasterState(sNetId := '5.124.224.126.6.1');
 	
