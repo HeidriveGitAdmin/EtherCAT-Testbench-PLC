@@ -268,6 +268,12 @@ fbLogicSupplyLeft(bSwitchOn := bA82_3);
 fbLogicSupplyRight (bSwitchOn := bA82_7);
 fbSTOLeft(bSwitchOn := bA82_5);
 
+fbOblacBoxLeft(bSwitchOn := bA83_1);
+fbReferenceControlerLeft(bSwitchOn := bA83_2);
+	
+fbOblacBoxRight(bSwitchOn := bA83_3);		
+fbReferenceControlerRight(bSwitchOn := bA83_4);
+
 fbPowerSupplyLeft(nMaxVoltage := 80000,
 					nMaxPower := 150000,
 					nMaxCurrent := 50000,
@@ -356,6 +362,8 @@ IF bSwitchOffPowerSupply THEN
 	bSwitchOffPowerSupply := FALSE;
 END_IF
 
+fbSlaveNameLeft();
+fbSlaveNameRight();
 
 
 ]]></ST>
@@ -371,6 +379,10 @@ END_IF
       <LineId Id="415" Count="0" />
       <LineId Id="330" Count="0" />
       <LineId Id="2048" Count="0" />
+      <LineId Id="3022" Count="1" />
+      <LineId Id="3026" Count="1" />
+      <LineId Id="3021" Count="0" />
+      <LineId Id="3024" Count="0" />
       <LineId Id="849" Count="0" />
       <LineId Id="846" Count="0" />
       <LineId Id="1085" Count="3" />
@@ -444,7 +456,9 @@ END_IF
       <LineId Id="1348" Count="0" />
       <LineId Id="1350" Count="0" />
       <LineId Id="1349" Count="0" />
+      <LineId Id="3028" Count="0" />
       <LineId Id="2758" Count="0" />
+      <LineId Id="3029" Count="0" />
       <LineId Id="2770" Count="0" />
       <LineId Id="2768" Count="0" />
       <LineId Id="2757" Count="0" />
