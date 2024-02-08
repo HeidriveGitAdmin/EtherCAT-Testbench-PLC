@@ -1242,21 +1242,6 @@
 				</Box>
 				<EtherCAT/>
 			</Device>
-			<Device Id="3" DevType="112" AmsPort="28675" AmsNetId="5.124.224.126.4.1" RemoteName="Gerät 3 (EtherCAT Automation Protocol)">
-				<Name>Gerät 3 (EtherCAT Automation Protocol)</Name>
-				<AddressInfo>
-					<Pnp>
-						<DeviceDesc>PCI\TcI8254x1</DeviceDesc>
-						<DeviceName>PCI\TCI8254X1</DeviceName>
-						<DeviceData>0001057ce07e</DeviceData>
-					</Pnp>
-				</AddressInfo>
-				<Image Id="3" AddrType="1" ImageType="3">
-					<Name>Prozessabbild</Name>
-				</Image>
-				<Ethernet DeviceDesc="PCI\TcI8254x1"/>
-				<Eap EapDeviceGuid="{D3E7C3FA-05D4-4CF0-975F-68CC701FE6A4}"/>
-			</Device>
 			<Device Id="5" DevType="111" DevFlags="#x0003" AmsPort="28677" AmsNetId="5.124.224.126.6.1" RemoteName="Gerät 5 (EtherCAT)" InfoImageId="5">
 				<Name>Gerät 5 (EtherCAT)</Name>
 				<AddressInfo>
