@@ -11,7 +11,7 @@ VAR
     fbReqMasterState : FB_EcReqMasterState;
     bExecute         : BOOL;
 	tTimeout		 : TIME := DEFAULT_ADS_TIMEOUT;
-    state            : WORD;;
+    MasterState            : WORD;;
 	bBusy  			 : BOOL;
 END_VAR
 
@@ -27,7 +27,10 @@ END_VAR
 VAR
 	fTrig			: F_Trig;
 END_VAR
-]]></Declaration>
+
+VAR
+	state : eStates := eStates.INIT;
+END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute); //state:=fbReqMasterState
 bError := fbReqMasterState.bError;
@@ -45,7 +48,37 @@ ELSIF fTrig.Q AND bError THEN
 	bStateChangeSuccessful := FALSE;
 END_IF
 
-]]></ST>
+CASE state OF
+    eStates.INIT:
+        IF bExecute THEN
+            eMasterState := WAIT_FOR_EXECUTION;
+            fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:= IF enable THEN EC_DEVICE_STATE_PREOP ELSE EC_DEVICE_STATE_INIT END_IF);
+            bExecute := FALSE; // Verhindert erneutes Auslösen
+            bStateChangeOccurred := FALSE;
+            bStateChangeSuccsessful := FALSE;
+        END_IF
+        
+    eStates.WAIT_FOR_EXECUTION:
+        IF NOT fbReqMasterState.bBusy THEN
+            state := eStates.EXECUTING;
+        END_IF
+
+    eStates.EXECUTING:
+        IF fbReqMasterState.bBusy THEN
+            // Warten auf Abschluss der Operation
+            bStateChangeOccurred := TRUE; // Signalisieren, dass eine Änderung stattfindet
+            IF NOT fbReqMasterState.bError THEN
+                bStateChangeSuccsessful := TRUE;
+            ELSE
+                bStateChangeSuccsessful := FALSE;
+            END_IF
+            state := eStates.DONE;
+        END_IF
+
+    eStates.DONE:
+        // Zustand für den nächsten Zyklus zurücksetzen oder auf weitere Anweisungen warten
+        state := eStates.INIT; // Oder halten Sie den Zustand auf DONE, bis eine neue Aktion angefordert wird
+END_CASE]]></ST>
     </Implementation>
     <Method Name="DisableMaster" Id="{29b01c97-b07f-4ad5-9efe-e980c6fe8cda}">
       <Declaration><![CDATA[{attribute 'TcRpcEnable'}
@@ -121,6 +154,7 @@ END_VAR]]></Declaration>
       <LineId Id="103" Count="3" />
       <LineId Id="100" Count="0" />
       <LineId Id="97" Count="0" />
+      <LineId Id="133" Count="29" />
       <LineId Id="83" Count="0" />
     </LineIds>
     <LineIds Name="FB_EcMasterState.DisableMaster">
