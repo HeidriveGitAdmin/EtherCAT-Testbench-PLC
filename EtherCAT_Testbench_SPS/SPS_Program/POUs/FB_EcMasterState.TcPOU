@@ -19,7 +19,7 @@ VAR_OUTPUT
     bError           : BOOL;
     nErrId           : UDINT;
 
-	bStateChangeSuccsessful : BOOL;//fertig bit
+	bStateChangeSuccessful : BOOL;//fertig bit
 	bStateChangeOccurred : BOOL; //erfolgt bit
 END_VAR
 
@@ -29,20 +29,20 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=EC_DEVICE_STATE_INIT);
+      <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute); //state:=fbReqMasterState
 bError := fbReqMasterState.bError;
 nErrId := fbReqMasterState.nErrId;
 bBusy := fbReqMasterState.bBusy;
 
-fTrig(CLK := bBusy);
+fTrig(CLK := bBusy); //auf fallende flanke von busy triggern
 
-//wenn nicht mehr bussy dann bStateChangeOccured / succsess
+//wenn nicht mehr bussy dann bStateChangeOccured / success ja nein
 IF fTrig.Q AND NOT bError THEN
 	bStateChangeOccurred := TRUE;
-	bStateChangeSuccsessful := TRUE;
-ELSIF fTrig.Q AND NOT bError THEN
+	bStateChangeSuccessful := TRUE;
+ELSIF fTrig.Q AND bError THEN
 	bStateChangeOccurred := TRUE;
-	bStateChangeSuccsessful := FALSE;
+	bStateChangeSuccessful := FALSE;
 END_IF
 
 ]]></ST>
@@ -63,7 +63,7 @@ END_VAR
 	bBusy := fbReqMasterState.bBusy;
 	
 	bStateChangeOccurred := FALSE; //reset
-	bStateChangeSuccsessful := FALSE; //reset
+	bStateChangeSuccessful := FALSE; //reset
 	
 	DisableMaster := TRUE;
 ELSE
@@ -82,14 +82,14 @@ END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF NOT bBusy THEN
 	bExecute := TRUE;
-	fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=EC_DEVICE_STATE_PREOP);
+	fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=EC_DEVICE_STATE_OP);
 	bExecute := FALSE;
 	bError := fbReqMasterState.bError;
 	nErrId := fbReqMasterState.nErrId;
 	bBusy := fbReqMasterState.bBusy;
 	
 	bStateChangeOccurred := FALSE; //reset
-	bStateChangeSuccsessful := FALSE; //reset
+	bStateChangeSuccessful := FALSE; //reset
 	
 	EnableMaster := TRUE;
 ELSE

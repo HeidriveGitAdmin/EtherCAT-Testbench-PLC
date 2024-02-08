@@ -356,7 +356,7 @@
 		</Plc>
 		<Io>
 			<Device Id="1" DevType="124" DevFlags="#x0004">
-				<Name>Device 1 (Beckhoff CCAT)</Name>
+				<Name>Gerät 1 (Beckhoff CCAT)</Name>
 				<ImageId>230</ImageId>
 				<AddressInfo>
 					<Pci>
@@ -412,8 +412,8 @@
 					</Slot>
 				</CCat>
 			</Device>
-			<Device Id="2" DevType="111" DevFlags="#x0003" AmsPort="28674" AmsNetId="10.200.20.140.3.1" RemoteName="Device 2 (EtherCAT)" InfoImageId="2">
-				<Name>Device 2 (EtherCAT)</Name>
+			<Device Id="2" DevType="111" DevFlags="#x0003" AmsPort="28674" AmsNetId="5.124.224.126.3.1" RemoteName="Gerät 2 (EtherCAT)" InfoImageId="2">
+				<Name>Gerät 2 (EtherCAT)</Name>
 				<AddressInfo>
 					<Ccat>
 						<Address>-801112064</Address>
@@ -440,10 +440,10 @@
 					</Ccat>
 				</AddressInfo>
 				<Image Id="1" AddrType="9" ImageType="3">
-					<Name>Image</Name>
+					<Name>Prozessabbild</Name>
 				</Image>
 				<Box Id="1" BoxType="9099">
-					<Name>Klemme 13 (EK1200)</Name>
+					<Name>Klemme 1 (EK1200)</Name>
 					<ImageId>1000</ImageId>
 					<EtherCAT PdiType="#x0100" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04b02c52" RevisionNo="#x00001388" InfoDataState="false" PortPhys="49" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1200-5000 EtherCAT Netzteil (2A E-Bus)" Desc="EK1200" PortABoxInfo="#x00ffffff"/>
 					<Box Id="2" BoxType="9099">
@@ -1215,29 +1215,14 @@
 						</EtherCAT>
 					</Box>
 					<Box Id="12" BoxType="9099">
-						<Name>Klemme 24 (EL9011)</Name>
+						<Name>Klemme 12 (EL9011)</Name>
 						<ImageId>1004</ImageId>
 						<EtherCAT CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x23333050" InfoDataState="false" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9011 Endklemme" Desc="EL9011" PortABoxInfo="#x0100000b"/>
 					</Box>
 				</Box>
 				<EtherCAT/>
 			</Device>
-			<Device Id="3" DevType="112" AmsPort="28675" AmsNetId="10.200.20.140.4.1" RemoteName="Gerät 3 (EtherCAT Automation Protocol)">
-				<Name>Gerät 3 (EtherCAT Automation Protocol)</Name>
-				<AddressInfo>
-					<Pnp>
-						<DeviceDesc>PCI\TcI8254x1</DeviceDesc>
-						<DeviceName>PCI\TCI8254X1</DeviceName>
-						<DeviceData>0001057ce07e</DeviceData>
-					</Pnp>
-				</AddressInfo>
-				<Image Id="3" AddrType="1" ImageType="3">
-					<Name>Prozessabbild</Name>
-				</Image>
-				<Ethernet DeviceDesc="PCI\TcI8254x1"/>
-				<Eap EapDeviceGuid="{D3E7C3FA-05D4-4CF0-975F-68CC701FE6A4}"/>
-			</Device>
-			<Device Id="5" DevType="111" DevFlags="#x0003" AmsPort="28677" AmsNetId="10.200.20.140.6.1" RemoteName="Gerät 5 (EtherCAT)" InfoImageId="5">
+			<Device Id="5" DevType="111" DevFlags="#x0003" AmsPort="28677" AmsNetId="5.124.224.126.6.1" RemoteName="Gerät 5 (EtherCAT)" InfoImageId="5">
 				<Name>Gerät 5 (EtherCAT)</Name>
 				<AddressInfo>
 					<Pnp>
@@ -1497,4 +1482,93 @@
 			</Device>
 		</Io>
 	</Project>
+	<Mappings>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
+		<OwnerA Name="TIPC^SPS_Program^SPS_Program Instance">
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL2068)">
+				<Link VarA="PlcTask Outputs^MAIN.bA83_1" VarB="DOS RxPDO-Map Outputs Ch.01^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA83_2" VarB="DOS RxPDO-Map Outputs Ch.03^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA83_3" VarB="DOS RxPDO-Map Outputs Ch.05^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA83_4" VarB="DOS RxPDO-Map Outputs Ch.07^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA83_5" VarB="DOS RxPDO-Map Outputs Ch.02^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA83_6" VarB="DOS RxPDO-Map Outputs Ch.04^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA83_7" VarB="DOS RxPDO-Map Outputs Ch.06^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA83_8" VarB="DOS RxPDO-Map Outputs Ch.08^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL2068)">
+				<Link VarA="PlcTask Outputs^MAIN.bA84_1" VarB="DOS RxPDO-Map Outputs Ch.01^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA84_2" VarB="DOS RxPDO-Map Outputs Ch.02^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA84_3" VarB="DOS RxPDO-Map Outputs Ch.03^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA84_4" VarB="DOS RxPDO-Map Outputs Ch.04^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA84_5" VarB="DOS RxPDO-Map Outputs Ch.05^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA84_6" VarB="DOS RxPDO-Map Outputs Ch.06^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA84_8" VarB="DOS RxPDO-Map Outputs Ch.08^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA85_7" VarB="DOS RxPDO-Map Outputs Ch.07^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1018)">
+				<Link VarA="PlcTask Inputs^MAIN.bA61_1" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA61_2" VarB="Channel 3^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA61_3" VarB="Channel 5^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA61_4" VarB="Channel 7^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA61_5" VarB="Channel 2^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA61_6" VarB="Channel 4^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA61_7" VarB="Channel 6^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA61_8" VarB="Channel 8^Input" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1018)">
+				<Link VarA="PlcTask Inputs^MAIN.bA62_1" VarB="Channel 1^Input" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1018)">
+				<Link VarA="PlcTask Inputs^MAIN.bA63_1" VarB="Channel 1^Input" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1018)">
+				<Link VarA="PlcTask Inputs^MAIN.bA64_1" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA64_2" VarB="Channel 3^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA64_3" VarB="Channel 5^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA64_4" VarB="Channel 7^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA64_5" VarB="Channel 2^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA64_6" VarB="Channel 4^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA64_7" VarB="Channel 6^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bA64_8" VarB="Channel 8^Input" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL4104)">
+				<Link VarA="PlcTask Outputs^MAIN.nA71_1" VarB="AO Output Channel 1^Analog output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.nA71_3" VarB="AO Output Channel 3^Analog output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.nA71_5" VarB="AO Output Channel 2^Analog output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.nA71_7" VarB="AO Output Channel 4^Analog output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 7 (EL3064)">
+				<Link VarA="PlcTask Inputs^MAIN.nA72_1" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.nA72_3" VarB="AI Standard Channel 3^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.nA72_5" VarB="AI Standard Channel 2^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.nA72_7" VarB="AI Standard Channel 4^Value" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL2068)">
+				<Link VarA="PlcTask Outputs^MAIN.bA81_1" VarB="DOS RxPDO-Map Outputs Ch.01^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA81_2" VarB="DOS RxPDO-Map Outputs Ch.03^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA81_3" VarB="DOS RxPDO-Map Outputs Ch.05^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA81_4" VarB="DOS RxPDO-Map Outputs Ch.07^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA81_5" VarB="DOS RxPDO-Map Outputs Ch.02^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA81_6" VarB="DOS RxPDO-Map Outputs Ch.04^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA81_7" VarB="DOS RxPDO-Map Outputs Ch.06^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA81_8" VarB="DOS RxPDO-Map Outputs Ch.08^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL2068)">
+				<Link VarA="PlcTask Outputs^MAIN.bA82_1" VarB="DOS RxPDO-Map Outputs Ch.01^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA82_2" VarB="DOS RxPDO-Map Outputs Ch.03^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA82_3" VarB="DOS RxPDO-Map Outputs Ch.05^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA82_4" VarB="DOS RxPDO-Map Outputs Ch.07^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA82_5" VarB="DOS RxPDO-Map Outputs Ch.02^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA82_6" VarB="DOS RxPDO-Map Outputs Ch.04^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA82_7" VarB="DOS RxPDO-Map Outputs Ch.06^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.bA82_8" VarB="DOS RxPDO-Map Outputs Ch.08^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 5 (EtherCAT)^Drive 13 (SOMANET Node)">
+				<Link VarA="PlcTask Inputs^MAIN.statusword_node_13" VarB="TxPDO Mapping 1^Statusword" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 5 (EtherCAT)^Drive 14 (SOMANET Node)">
+				<Link VarA="PlcTask Inputs^MAIN.statusword_node_14" VarB="TxPDO Mapping 1^Statusword" AutoLink="true"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
 </TcSmProject>

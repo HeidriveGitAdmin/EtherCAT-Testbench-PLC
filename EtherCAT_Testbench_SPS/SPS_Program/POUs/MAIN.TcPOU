@@ -249,108 +249,31 @@ VAR
 	
 	bGotAnswer : BOOL := FALSE;
 	
+	{attribute 'TcLinkTo' := 'TIID^Device 5 (EtherCAT)^Drive 13 (SOMANET Node)^TxPDO Mapping 1^Statusword'}
 	statusword_node_13 AT %I* : UINT;
+	
+	{attribute 'TcLinkTo' := 'TIID^Device 5 (EtherCAT)^Drive 14 (SOMANET Node)^TxPDO Mapping 1^Statusword'}
 	statusword_node_14 AT %I* : UINT;
+	
+	bInit : BOOL := FALSE; //for switching master into init
+	
+	bSetEnable : BOOL := FALSE;
+	
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbLightControlLeft (bTrig1 := bA84_1,  //weiß
-					bTrig2 := bA84_3,	//Grau
-				 	bTrig3 := bA84_2);	//Schwarz
-				 
-fbLightControlRight(bTrig1	:= bA84_4,	//weiß
-					bTrig2	:= bA84_6,	//grau
-					bTrig3	:= bA84_5);	//schwarz
-			
-fbStartLeft(bSwitchOn := bA64_1,
-			bSwitchOff := bA64_2);
-		
-fbLogicSupplyLeft(bSwitchOn := bA82_3);		
-fbLogicSupplyRight (bSwitchOn := bA82_7);
-fbSTOLeft(bSwitchOn := bA82_5);
+      <ST><![CDATA[IF NOT bInit THEN
+	fbOblacBoxLeft.SwitchOn();
+	fbEcMasterStateLeft.DisableMaster();
+	bInit := TRUE;
+END_IF
 
-fbOblacBoxLeft(bSwitchOn := bA83_1);
-fbReferenceControlerLeft(bSwitchOn := bA83_2);
-	
-fbOblacBoxRight(bSwitchOn := bA83_3);		
-fbReferenceControlerRight(bSwitchOn := bA83_4);
-
-fbPowerSupplyLeft(nMaxVoltage := 80000,
-					nMaxPower := 150000,
-					nMaxCurrent := 50000,
-					nCurrentFromPowerSupply := nA72_3,
-					nVoltageFromPowerSupply := nA72_5,
-					nReferenceVoltage := nA72_1,
-					bREMSB => bA81_5,
-					nVoltage => nA71_1,
-					nCurrent => nA71_5,
-					nPower => nA71_3);				
+//////////////////////EC-IN-OUT/////////////////////////////////
+fbSlaveNameLeft();
+fbSlaveNameRight();
+fbEcMasterStateLeft();
+fbEcMasterStateRight();
 					
-fbYesNoLeft(bYes := bA64_1,
-			bNo := bA64_2,
-			bGotAnswer => bGotAnswer);
-			
-fbWatchPhotoelectricBarrierLeft(nInterrupted := nA72_7);
-
-IF fbWatchPhotoelectricBarrierLeft.bInterrupted THEN
-	fbPowerSupplyLeft.SwitchOff();
-	fbLogicSupplyLeft.SwitchOff();
-END_IF
-
-nCurrentLeft := fbPowerSupplyLeft.CurrentCurrent;
-nVoltageLeft := fbPowerSupplyLeft.CurrentVoltage;
-
-//Zum testen
-IF bTestWhite THEN
-	fbLightControlLeft.White();
-	//fbLightControlRight.White();
-	bTestWhite := FALSE;
-END_IF
-IF bTestGreen THEN
-	fbLightControlLeft.Green();
-	fbLightControlRight.Green();
-	bTestGreen := FALSE;
-END_IF
-
-IF bTestRed THEN
-	fbLightControlLeft.Red();
-	fbLightControlRight.Red();
-	bTestRed := FALSE;
-END_IF
-
-IF bTestYellow THEN
-	fbLightControlLeft.Yellow();
-	fbLightControlRight.Yellow();
-	bTestYellow := FALSE;
-END_IF
-
-IF bSwitchOff THEN
-	fbLightControlLeft.SwitchOff();
-	fbLightControlRight.SwitchOff();
-	bSwitchOff := FALSE;
-END_IF
-
-IF bTestLogicOn THEN
-	fbLogicSupplyLeft.SwitchOn();
-	fbSTOLeft.SwitchOn();
-	bTestLogicOn := FALSE;
-END_IF
-IF bTestLogicOff THEN
-	fbLogicSupplyLeft.SwitchOff();
-	fbSTOLeft.SwitchOff();
-	bTestLogicOff := FALSE;
-END_IF
-
-IF bReset THEN
-	fbYesNoLeft.Reset();
-	bReset := FALSE;
-END_IF
-
-
-fbPowerSupplyLeft.TargetCurrent := nTargetCurrentLeft;
-fbPowerSupplyLeft.TargetVoltage := nTargetVoltageLeft;
-fbPowerSupplyLeft.TargetPower := nTargetPowerLeft;
-bSetPowVolCurr := FALSE;
-
+/////////////////////Power-Supply///////////////////////////////
 
 IF bSwitchOnPowerSupply THEN
 	fbPowerSupplyLeft.SwitchOn();
@@ -362,106 +285,114 @@ IF bSwitchOffPowerSupply THEN
 	bSwitchOffPowerSupply := FALSE;
 END_IF
 
-fbSlaveNameLeft();
-fbSlaveNameRight();
+
+fbPowerSupplyLeft.TargetCurrent := nTargetCurrentLeft;
+fbPowerSupplyLeft.TargetVoltage := nTargetVoltageLeft;
+fbPowerSupplyLeft.TargetPower := nTargetPowerLeft;
+bSetPowVolCurr := FALSE;
+
+fbPowerSupplyLeft(nMaxVoltage := 80000,
+					nMaxPower := 150000,
+					nMaxCurrent := 50000,
+					nCurrentFromPowerSupply := nA72_3,
+					nVoltageFromPowerSupply := nA72_5,
+					nReferenceVoltage := nA72_1,
+					bREMSB => bA81_5,
+					nVoltage => nA71_1,
+					nCurrent => nA71_5,
+					nPower => nA71_3);
+					
+nCurrentLeft := fbPowerSupplyLeft.CurrentCurrent;
+nVoltageLeft := fbPowerSupplyLeft.CurrentVoltage;
+
+///////////////////Logic-Supply/////////////////////////////
+fbLogicSupplyLeft(bSwitchOn := bA82_3);		
+fbLogicSupplyRight (bSwitchOn := bA82_7);
+
+///////////////////STO-Supply/////////////////////////////
+fbSTOLeft(bSwitchOn := bA82_5);
+
+fbOblacBoxLeft(bSwitchOn := bA83_1);
+fbReferenceControlerLeft(bSwitchOn := bA83_2);
+	
+fbOblacBoxRight(bSwitchOn := bA83_3);		
+fbReferenceControlerRight(bSwitchOn := bA83_4);
 
 
-]]></ST>
+/////////////////////Light-Control///////////////////////////////
+fbLightControlLeft (bTrig1 := bA84_1,  //weiß
+					bTrig2 := bA84_3,	//Grau
+				 	bTrig3 := bA84_2);	//Schwarz
+				 
+fbLightControlRight(bTrig1	:= bA84_4,	//weiß
+					bTrig2	:= bA84_6,	//grau
+					bTrig3	:= bA84_5);	//schwarz
+					
+/////////////////////Physical-Buttons///////////////////////////
+fbStartLeft(bSwitchOn := bA64_1,
+			bSwitchOff := bA64_2);
+			
+fbYesNoLeft(bYes := bA64_1,
+			bNo := bA64_2,
+			bGotAnswer => bGotAnswer);
+			
+IF bReset THEN
+	fbYesNoLeft.Reset();
+	bReset := FALSE;
+END_IF
+			
+/////////////////////Photoelectric-Barrier///////////////////////
+fbWatchPhotoelectricBarrierLeft(nInterrupted := nA72_7);
+
+IF fbWatchPhotoelectricBarrierLeft.bInterrupted THEN
+	fbPowerSupplyLeft.SwitchOff();
+	fbLogicSupplyLeft.SwitchOff();
+END_IF
+
+
+///////////////////////////Testing//////////////////////////////////
+
+IF bSetEnable THEN
+	fbEcMasterStateLeft.EnableMaster();
+	bSetEnable := FALSE;
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="2" Count="0" />
-      <LineId Id="36" Count="1" />
-      <LineId Id="40" Count="3" />
+      <LineId Id="3419" Count="3" />
+      <LineId Id="3325" Count="0" />
+      <LineId Id="3371" Count="0" />
+      <LineId Id="3370" Count="0" />
+      <LineId Id="3376" Count="3" />
+      <LineId Id="3306" Count="0" />
       <LineId Id="215" Count="0" />
-      <LineId Id="329" Count="0" />
-      <LineId Id="332" Count="0" />
-      <LineId Id="848" Count="0" />
+      <LineId Id="3316" Count="8" />
+      <LineId Id="3308" Count="0" />
+      <LineId Id="3380" Count="4" />
+      <LineId Id="3309" Count="0" />
+      <LineId Id="3395" Count="9" />
+      <LineId Id="3394" Count="0" />
+      <LineId Id="3405" Count="0" />
+      <LineId Id="3407" Count="0" />
+      <LineId Id="3406" Count="0" />
+      <LineId Id="3386" Count="0" />
+      <LineId Id="3385" Count="0" />
       <LineId Id="415" Count="0" />
       <LineId Id="330" Count="0" />
+      <LineId Id="3390" Count="0" />
+      <LineId Id="3389" Count="0" />
       <LineId Id="2048" Count="0" />
       <LineId Id="3022" Count="1" />
       <LineId Id="3026" Count="1" />
       <LineId Id="3021" Count="0" />
       <LineId Id="3024" Count="0" />
+      <LineId Id="3427" Count="29" />
+      <LineId Id="3426" Count="0" />
       <LineId Id="849" Count="0" />
-      <LineId Id="846" Count="0" />
-      <LineId Id="1085" Count="3" />
-      <LineId Id="1099" Count="4" />
-      <LineId Id="1092" Count="0" />
-      <LineId Id="506" Count="1" />
-      <LineId Id="2520" Count="0" />
-      <LineId Id="851" Count="1" />
-      <LineId Id="854" Count="0" />
-      <LineId Id="853" Count="0" />
-      <LineId Id="855" Count="0" />
-      <LineId Id="857" Count="0" />
-      <LineId Id="856" Count="0" />
-      <LineId Id="1814" Count="0" />
-      <LineId Id="1813" Count="0" />
-      <LineId Id="1815" Count="0" />
-      <LineId Id="859" Count="0" />
+      <LineId Id="1103" Count="0" />
       <LineId Id="324" Count="0" />
-      <LineId Id="54" Count="0" />
-      <LineId Id="320" Count="0" />
-      <LineId Id="322" Count="1" />
-      <LineId Id="321" Count="0" />
-      <LineId Id="53" Count="0" />
-      <LineId Id="55" Count="0" />
-      <LineId Id="57" Count="0" />
-      <LineId Id="62" Count="0" />
-      <LineId Id="56" Count="0" />
-      <LineId Id="59" Count="0" />
-      <LineId Id="58" Count="0" />
-      <LineId Id="60" Count="0" />
-      <LineId Id="63" Count="1" />
-      <LineId Id="61" Count="0" />
-      <LineId Id="66" Count="0" />
-      <LineId Id="65" Count="0" />
-      <LineId Id="67" Count="0" />
-      <LineId Id="69" Count="0" />
-      <LineId Id="71" Count="0" />
-      <LineId Id="68" Count="0" />
-      <LineId Id="73" Count="0" />
-      <LineId Id="72" Count="0" />
-      <LineId Id="74" Count="0" />
-      <LineId Id="76" Count="1" />
-      <LineId Id="503" Count="0" />
-      <LineId Id="597" Count="0" />
-      <LineId Id="595" Count="0" />
-      <LineId Id="598" Count="0" />
-      <LineId Id="2049" Count="0" />
-      <LineId Id="600" Count="0" />
-      <LineId Id="599" Count="0" />
-      <LineId Id="601" Count="1" />
-      <LineId Id="2050" Count="0" />
-      <LineId Id="604" Count="0" />
-      <LineId Id="603" Count="0" />
-      <LineId Id="606" Count="0" />
-      <LineId Id="605" Count="0" />
-      <LineId Id="608" Count="0" />
-      <LineId Id="610" Count="0" />
-      <LineId Id="609" Count="0" />
       <LineId Id="1330" Count="0" />
-      <LineId Id="1329" Count="0" />
-      <LineId Id="2283" Count="1" />
-      <LineId Id="2282" Count="0" />
-      <LineId Id="1331" Count="0" />
-      <LineId Id="1333" Count="0" />
-      <LineId Id="1340" Count="0" />
-      <LineId Id="1339" Count="0" />
-      <LineId Id="1343" Count="0" />
-      <LineId Id="1341" Count="1" />
-      <LineId Id="1346" Count="0" />
-      <LineId Id="1345" Count="0" />
-      <LineId Id="1348" Count="0" />
-      <LineId Id="1350" Count="0" />
-      <LineId Id="1349" Count="0" />
-      <LineId Id="3028" Count="0" />
-      <LineId Id="2758" Count="0" />
-      <LineId Id="3029" Count="0" />
+      <LineId Id="3423" Count="2" />
       <LineId Id="2770" Count="0" />
-      <LineId Id="2768" Count="0" />
-      <LineId Id="2757" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
