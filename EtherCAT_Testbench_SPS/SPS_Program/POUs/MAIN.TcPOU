@@ -20,6 +20,7 @@ VAR
 	bA61_7		AT %I* 				: BOOL;
 	{attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1018)^Channel 8^Input'}
 	bA61_8		AT %I* 				: BOOL;
+	bSetEnable_SlaveName: BOOL;
 END_VAR
 
 
@@ -217,10 +218,10 @@ VAR
 	fbReferenceControlerRight		: FB_LogicSupply;
 	
 	fbEcMasterStateLeft : FB_EcMasterState(sNetId := '5.124.224.126.6.1');
-	fbEcMasterStateRight : FB_EcMasterState(sNetId := '5.124.224.126.6.1');
+	//fbEcMasterStateRight : FB_EcMasterState(sNetId := '5.124.224.126.6.1');
 	
 	fbSlaveNameLeft : FB_SlaveName(sNetId := '5.124.224.126.6.1');
-	fbSlaveNameRight : FB_SlaveName(sNetId := '5.124.224.126.6.1');
+	//fbSlaveNameRight : FB_SlaveName(sNetId := '5.124.224.126.6.1');
 END_VAR
 
 VAR
@@ -261,17 +262,28 @@ VAR
 	
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF NOT bInit THEN
+      <ST><![CDATA[fbOblacBoxLeft(bSwitchOn := bA83_1);
+fbReferenceControlerLeft(bSwitchOn := bA83_2);
+	
+fbOblacBoxRight(bSwitchOn := bA83_3);
+fbReferenceControlerRight(bSwitchOn := bA83_4);
+
+///////////////////Logic-Supply/////////////////////////////
+fbLogicSupplyLeft(bSwitchOn := bA82_3);		
+fbLogicSupplyRight (bSwitchOn := bA82_7);
+
+IF NOT bInit THEN
 	fbOblacBoxLeft.SwitchOn();
+	fbReferenceControlerLeft.SwitchOff();
 	fbEcMasterStateLeft.DisableMaster();
 	bInit := TRUE;
 END_IF
 
 //////////////////////EC-IN-OUT/////////////////////////////////
 fbSlaveNameLeft();
-fbSlaveNameRight();
+//fbSlaveNameRight();
 fbEcMasterStateLeft();
-fbEcMasterStateRight();
+//fbEcMasterStateRight();
 					
 /////////////////////Power-Supply///////////////////////////////
 
@@ -305,18 +317,10 @@ fbPowerSupplyLeft(nMaxVoltage := 80000,
 nCurrentLeft := fbPowerSupplyLeft.CurrentCurrent;
 nVoltageLeft := fbPowerSupplyLeft.CurrentVoltage;
 
-///////////////////Logic-Supply/////////////////////////////
-fbLogicSupplyLeft(bSwitchOn := bA82_3);		
-fbLogicSupplyRight (bSwitchOn := bA82_7);
+
 
 ///////////////////STO-Supply/////////////////////////////
 fbSTOLeft(bSwitchOn := bA82_5);
-
-fbOblacBoxLeft(bSwitchOn := bA83_1);
-fbReferenceControlerLeft(bSwitchOn := bA83_2);
-	
-fbOblacBoxRight(bSwitchOn := bA83_3);		
-fbReferenceControlerRight(bSwitchOn := bA83_4);
 
 
 /////////////////////Light-Control///////////////////////////////
@@ -344,10 +348,10 @@ END_IF
 /////////////////////Photoelectric-Barrier///////////////////////
 fbWatchPhotoelectricBarrierLeft(nInterrupted := nA72_7);
 
-IF fbWatchPhotoelectricBarrierLeft.bInterrupted THEN
-	fbPowerSupplyLeft.SwitchOff();
-	fbLogicSupplyLeft.SwitchOff();
-END_IF
+//IF fbWatchPhotoelectricBarrierLeft.bInterrupted THEN
+//	fbPowerSupplyLeft.SwitchOff();
+//	fbLogicSupplyLeft.SwitchOff();
+//END_IF
 
 
 ///////////////////////////Testing//////////////////////////////////
@@ -355,10 +359,21 @@ END_IF
 IF bSetEnable THEN
 	fbEcMasterStateLeft.EnableMaster();
 	bSetEnable := FALSE;
+END_IF
+
+IF bSetEnable_SlaveName THEN
+	fbSlaveNameLeft.CheckName('Testmotor');
+	bSetEnable_SlaveName := FALSE;
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="3419" Count="3" />
+      <LineId Id="3979" Count="3" />
+      <LineId Id="3977" Count="1" />
+      <LineId Id="3717" Count="1" />
+      <LineId Id="3715" Count="1" />
+      <LineId Id="3419" Count="1" />
+      <LineId Id="4247" Count="0" />
+      <LineId Id="3421" Count="1" />
       <LineId Id="3325" Count="0" />
       <LineId Id="3371" Count="0" />
       <LineId Id="3370" Count="0" />
@@ -375,16 +390,10 @@ END_IF]]></ST>
       <LineId Id="3407" Count="0" />
       <LineId Id="3406" Count="0" />
       <LineId Id="3386" Count="0" />
-      <LineId Id="3385" Count="0" />
-      <LineId Id="415" Count="0" />
       <LineId Id="330" Count="0" />
       <LineId Id="3390" Count="0" />
       <LineId Id="3389" Count="0" />
       <LineId Id="2048" Count="0" />
-      <LineId Id="3022" Count="1" />
-      <LineId Id="3026" Count="1" />
-      <LineId Id="3021" Count="0" />
-      <LineId Id="3024" Count="0" />
       <LineId Id="3427" Count="29" />
       <LineId Id="3426" Count="0" />
       <LineId Id="849" Count="0" />
@@ -393,6 +402,8 @@ END_IF]]></ST>
       <LineId Id="1330" Count="0" />
       <LineId Id="3423" Count="2" />
       <LineId Id="2770" Count="0" />
+      <LineId Id="4242" Count="3" />
+      <LineId Id="4241" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
