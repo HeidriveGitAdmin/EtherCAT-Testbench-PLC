@@ -50,7 +50,6 @@ CASE state OF
             bStateChangeSuccessful := FALSE;
 			
 			bStateChangeOccurred := FALSE;
-			ADSLOGSTR(msgCtrlMask := ADSLOG_MSGTYPE_HINT, msgFmtStr   := 'occurred set false %s','');
 			
 			fbReqMasterState(sNetId:= sNetId, bExecute:=FALSE, state:= ReqMasterState);
 			
@@ -63,9 +62,7 @@ CASE state OF
 			fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:=ReqMasterState); //starten
 			
             state := eStates.EXECUTING;
-			ADSLOGSTR(
-        	msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
-        	msgFmtStr   := 'set state executing %s','');
+
         END_IF
 
     eStates.EXECUTING:
@@ -89,18 +86,20 @@ CASE state OF
         	msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
         	msgFmtStr   := 'beendet mit fehler %s','');
             END_IF
-			ADSLOGSTR(msgCtrlMask := ADSLOG_MSGTYPE_HINT, msgFmtStr   := 'occurred set true %s','');
+
 			bStateChangeOccurred := TRUE; // Signalisieren, dass eine Änderung stattgefunden hat
             state := eStates.DONE;
         END_IF
 
     eStates.DONE:
+	
+	bExecute := FALSE;
     //waiting for reset ...  no automatic reset    
     //state := eStates.INIT;
 
 ELSE
 	state := eStates.INIT;
-		
+	
 END_CASE;]]></ST>
     </Implementation>
     <Method Name="DisableMaster" Id="{29b01c97-b07f-4ad5-9efe-e980c6fe8cda}">
@@ -166,7 +165,7 @@ END_VAR
       <LineId Id="140" Count="0" />
       <LineId Id="295" Count="0" />
       <LineId Id="293" Count="0" />
-      <LineId Id="296" Count="1" />
+      <LineId Id="297" Count="0" />
       <LineId Id="210" Count="0" />
       <LineId Id="306" Count="0" />
       <LineId Id="254" Count="0" />
@@ -175,7 +174,6 @@ END_VAR
       <LineId Id="144" Count="0" />
       <LineId Id="204" Count="1" />
       <LineId Id="145" Count="0" />
-      <LineId Id="256" Count="1" />
       <LineId Id="255" Count="0" />
       <LineId Id="146" Count="2" />
       <LineId Id="195" Count="0" />
@@ -194,9 +192,11 @@ END_VAR
       <LineId Id="156" Count="0" />
       <LineId Id="298" Count="0" />
       <LineId Id="294" Count="0" />
-      <LineId Id="157" Count="5" />
+      <LineId Id="157" Count="3" />
+      <LineId Id="369" Count="1" />
+      <LineId Id="161" Count="1" />
       <LineId Id="199" Count="2" />
-      <LineId Id="198" Count="0" />
+      <LineId Id="368" Count="0" />
       <LineId Id="83" Count="0" />
     </LineIds>
     <LineIds Name="FB_EcMasterState.DisableMaster">

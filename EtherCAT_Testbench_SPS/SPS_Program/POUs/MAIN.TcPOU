@@ -217,10 +217,10 @@ VAR
 	fbReferenceControlerLeft		: FB_LogicSupply;
 	fbReferenceControlerRight		: FB_LogicSupply;
 	
-	fbEcMasterStateLeft : FB_EcMasterState(sNetId := '5.124.224.126.6.1');
+	fbEcMasterStateLeft : FB_EcMasterState(sNetId := '5.124.224.126.4.1');
 	//fbEcMasterStateRight : FB_EcMasterState(sNetId := '5.124.224.126.6.1');
 	
-	fbSlaveNameLeft : FB_SlaveName(sNetId := '5.124.224.126.6.1');
+	fbSlaveNameLeft : FB_SlaveName(sNetId := '5.124.224.126.4.1');
 	//fbSlaveNameRight : FB_SlaveName(sNetId := '5.124.224.126.6.1');
 END_VAR
 
@@ -250,10 +250,10 @@ VAR
 	
 	bGotAnswer : BOOL := FALSE;
 	
-	{attribute 'TcLinkTo' := 'TIID^Device 5 (EtherCAT)^Drive 13 (SOMANET Node)^TxPDO Mapping 1^Statusword'}
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Drive 14 (SOMANET Node)^TxPDO Mapping 1^Statusword'}
 	statusword_node_13 AT %I* : UINT;
 	
-	{attribute 'TcLinkTo' := 'TIID^Device 5 (EtherCAT)^Drive 14 (SOMANET Node)^TxPDO Mapping 1^Statusword'}
+	{attribute 'TcLinkTo' := 'TIID^Device 3 (EtherCAT)^Drive 15 (SOMANET Node)^TxPDO Mapping 1^Statusword'}
 	statusword_node_14 AT %I* : UINT;
 	
 	bInit : BOOL := FALSE; //for switching master into init

@@ -105,11 +105,14 @@ CASE state OF
         END_IF
 
     eStates.DONE:
+	
+	bExecute := FALSE;
     //waiting for reset ...  no automatic reset    
     //state := eStates.INIT;
 
 ELSE
 	state := eStates.INIT;
+	
 		
 END_CASE;]]></ST>
     </Implementation>
@@ -173,7 +176,11 @@ END_VAR
       <LineId Id="121" Count="1" />
       <LineId Id="130" Count="0" />
       <LineId Id="123" Count="0" />
-      <LineId Id="103" Count="9" />
+      <LineId Id="103" Count="3" />
+      <LineId Id="181" Count="1" />
+      <LineId Id="107" Count="4" />
+      <LineId Id="180" Count="0" />
+      <LineId Id="112" Count="0" />
       <LineId Id="57" Count="0" />
     </LineIds>
     <LineIds Name="FB_SlaveName.CheckName">
