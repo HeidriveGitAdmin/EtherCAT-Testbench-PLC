@@ -412,7 +412,7 @@
 					</Slot>
 				</CCat>
 			</Device>
-			<Device Id="2" DevType="111" DevFlags="#x0003" AmsPort="28674" AmsNetId="5.124.224.126.3.1" RemoteName="Gerät 2 (EtherCAT)" InfoImageId="2">
+			<Device Id="2" DevType="111" DevFlags="#x0003" AmsPort="28674" AmsNetId="10.200.20.140.3.1" RemoteName="Gerät 2 (EtherCAT)" InfoImageId="2">
 				<Name>Gerät 2 (EtherCAT)</Name>
 				<AddressInfo>
 					<Ccat>
@@ -1222,7 +1222,7 @@
 				</Box>
 				<EtherCAT/>
 			</Device>
-			<Device Id="3" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="5.124.224.126.4.1" RemoteName="Gerät 3 (EtherCAT)" InfoImageId="4">
+			<Device Id="3" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="10.200.20.140.4.1" RemoteName="Gerät 3 (EtherCAT)" InfoImageId="4">
 				<Name>Gerät 3 (EtherCAT)</Name>
 				<AddressInfo>
 					<TcCom>
