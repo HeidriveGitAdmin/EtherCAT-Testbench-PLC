@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_SlaveName" Id="{eb3d0e44-57cf-4ab5-989e-65f6df6260f4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SlaveName
+
+VAR_INPUT
+	sNetId     : T_AmsNetId;// := '5.124.224.126.6.1';	
+END_VAR
+
+VAR CONSTANT
+	nSlaveAddr : UINT := 1002; //motor 2
+    nIndex     : WORD := 16#20F2; //assigned name
+    nSubIndex  : BYTE := 0;
+END_VAR
+
+VAR
+	fbSdoRead  : FB_EcCoESdoRead;
+    bExecute   : BOOL;
+
+	
+	state : eStates := eStates.INIT;
+	RevSlaveName: STRING;
+END_VAR
+
+VAR_OUTPUT
+	bError     : BOOL;
+    nErrId     : UDINT;
+	
+	SlaveName : STRING;
+	
+	bReadSlaveNameOccurred : BOOL;
+	bReadSlaveNameSuccessful : BOOL;
+	bNameIsEqual : BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// state machine
+
+CASE state OF
+    eStates.INIT: //default state
+	
+	    bReadSlaveNameOccurred := FALSE;
+        bReadSlaveNameSuccessful := FALSE;
+		bNameIsEqual := FALSE;
+		SlaveName := '';
+		//RevSlaveName := '';
+		
+		
+		fbSdoRead(sNetId:= sNetId,nSlaveAddr :=nSlaveAddr, nIndex:=nIndex,
+				nSubIndex :=nSubIndex, pDstBuf:= ADR(SlaveName), cbBufLen:=SIZEOF(SlaveName), bExecute:=FALSE);
+			
+        IF bExecute THEN
+            state := eStates.START_EXECUTION;
+            bExecute := FALSE; // Verhindert erneutes Auslösen
+
+
+			
+			ADSLOGSTR(msgCtrlMask := ADSLOG_MSGTYPE_HINT, msgFmtStr   := 'executed %s','');
+        END_IF
+        
+    eStates.START_EXECUTION:
+	
+		fbSdoRead();
+	
+        IF NOT fbSdoRead.bBusy THEN //nur starten wenn nicht bussy
+			fbSdoRead(sNetId:= sNetId,nSlaveAddr :=nSlaveAddr, nIndex:=nIndex,
+				nSubIndex :=nSubIndex, pDstBuf:= ADR(SlaveName), cbBufLen:=SIZEOF(SlaveName), bExecute:=TRUE);
+			
+            state := eStates.EXECUTING;
+			ADSLOGSTR(
+        	msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
+        	msgFmtStr   := 'set state executing %s','');
+        END_IF
+		//TODO TIMEOUT
+
+    eStates.EXECUTING:
+	
+		fbSdoRead(); //Bussy flag update
+
+		IF fbSdoRead.bBusy THEN
+			// Warten auf Abschluss der Operation
+		ELSE
+            IF NOT fbSdoRead.bError THEN
+                bReadSlaveNameSuccessful := TRUE;
+											ADSLOGSTR(
+        	msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
+        	msgFmtStr   := 'beendet ohne fehler %s','');
+            ELSE
+                bReadSlaveNameSuccessful := FALSE;
+				bError := fbSdoRead.bError;
+				nErrId := fbSdoRead.nErrId;
+							ADSLOGSTR(
+        	msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
+        	msgFmtStr   := 'beendet mit fehler %s','');
+            END_IF
+			
+			IF SlaveName = RevSlaveName THEN
+				bNameIsEqual := TRUE;
+			ELSE
+				bNameIsEqual := FALSE;
+			END_IF
+			
+			bReadSlaveNameOccurred := TRUE; // Signalisieren, dass eine Änderung stattgefunden hat
+			
+            state := eStates.DONE;
+        END_IF
+
+    eStates.DONE:
+	
+	bExecute := FALSE;
+    //waiting for reset ...  no automatic reset    
+    //state := eStates.INIT;
+
+ELSE
+	state := eStates.INIT;
+	
+		
+END_CASE;]]></ST>
+    </Implementation>
+    <Method Name="CheckName" Id="{f4a354c5-32e4-4a35-a062-c82ab2378ff0}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD CheckName : BOOL
+VAR_INPUT
+		RevSlaveName : STRING;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bExecute := TRUE;
+THIS^.RevSlaveName := RevSlaveName;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_init" Id="{8b9e7215-169b-4fbe-8358-e02502a7dcfc}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+    bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+    bInCopyCode  : BOOL; // if TRUE, the instance afterwards gets moved into the copy code (online change)
+	sNetId           : T_AmsNetId;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.sNetId := sNetId;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{8b288858-ba3d-402f-ab27-ce98cc0bd48f}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[state := eStates.INIT;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_SlaveName">
+      <LineId Id="58" Count="3" />
+      <LineId Id="135" Count="2" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="148" Count="1" />
+      <LineId Id="147" Count="0" />
+      <LineId Id="144" Count="2" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="62" Count="2" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="119" Count="0" />
+      <LineId Id="68" Count="4" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="141" Count="0" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="73" Count="1" />
+      <LineId Id="115" Count="0" />
+      <LineId Id="75" Count="5" />
+      <LineId Id="142" Count="0" />
+      <LineId Id="81" Count="7" />
+      <LineId Id="90" Count="12" />
+      <LineId Id="120" Count="0" />
+      <LineId Id="124" Count="3" />
+      <LineId Id="121" Count="1" />
+      <LineId Id="130" Count="0" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="103" Count="3" />
+      <LineId Id="181" Count="1" />
+      <LineId Id="107" Count="4" />
+      <LineId Id="180" Count="0" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="57" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SlaveName.CheckName">
+      <LineId Id="15" Count="0" />
+      <LineId Id="28" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SlaveName.FB_init">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SlaveName.Reset">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

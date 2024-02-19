@@ -35,7 +35,12 @@ END_VAR]]></Declaration>
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[CurrentCurrent := nCurrentFromPowerSupply * nMaxCurrent/nReferenceVoltage;]]></ST>
+          <ST><![CDATA[IF nReferenceVoltage = 0 THEN
+	CurrentCurrent := 0;
+ELSE
+	CurrentCurrent := nCurrentFromPowerSupply * nMaxCurrent/nReferenceVoltage;
+END_IF
+]]></ST>
         </Implementation>
       </Get>
     </Property>
@@ -44,7 +49,11 @@ END_VAR
       <Get Name="Get" Id="{d81ca134-74ae-4c2a-b41c-4cd6d60e5feb}">
         <Declaration><![CDATA[]]></Declaration>
         <Implementation>
-          <ST><![CDATA[CurrentVoltage := UDINT_TO_UINT(nVoltageFromPowerSupply * nMaxVoltage/nReferenceVoltage);]]></ST>
+          <ST><![CDATA[IF nReferenceVoltage = 0 THEN
+	CurrentVoltage := 0;
+ELSE
+	CurrentVoltage := UDINT_TO_UINT(nVoltageFromPowerSupply * nMaxVoltage/nReferenceVoltage);
+END_IF]]></ST>
         </Implementation>
       </Get>
     </Property>
@@ -141,10 +150,17 @@ END_IF]]></ST>
       <LineId Id="80" Count="0" />
     </LineIds>
     <LineIds Name="FB_PowerSupply.CurrentCurrent.Get">
+      <LineId Id="5" Count="1" />
+      <LineId Id="8" Count="1" />
+      <LineId Id="7" Count="0" />
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="FB_PowerSupply.CurrentVoltage.Get">
-      <LineId Id="2" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_PowerSupply.SwitchOff">
       <LineId Id="6" Count="0" />

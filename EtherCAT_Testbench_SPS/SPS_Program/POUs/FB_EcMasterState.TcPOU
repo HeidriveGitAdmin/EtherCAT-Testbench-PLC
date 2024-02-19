@@ -3,53 +3,216 @@
   <POU Name="FB_EcMasterState" Id="{405fdbf8-f334-46b0-bbce-28e2b07965a9}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_EcMasterState
 
-VAR CONSTANT
-	sNetId           : T_AmsNetId:= '5.124.224.126.6.1';
+VAR_INPUT
+	sNetId           : T_AmsNetId; //:= '5.124.224.126.6.1';
 END_VAR
 
 VAR
     fbReqMasterState : FB_EcReqMasterState;
     bExecute         : BOOL;
-	tTimeout : TIME := DEFAULT_ADS_TIMEOUT;
-    state            : WORD := EC_DEVICE_STATE_INIT;
+	tTimeout		 : TIME := DEFAULT_ADS_TIMEOUT;
+    ReqMasterState      : WORD;
+	bBusy  			 : BOOL;
 END_VAR
 
 VAR_OUTPUT
     bError           : BOOL;
     nErrId           : UDINT;
+
+	bStateChangeSuccessful : BOOL;//fertig bit
+	bStateChangeOccurred : BOOL; //erfolgt bit
 END_VAR
-]]></Declaration>
+
+//other function blocks
+VAR
+	fTrig			: F_Trig;
+END_VAR
+
+VAR
+	state : eStates := eStates.INIT;
+END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[//fbReqMasterState(sNetId:= sNetId, bExecute:=bExecute, state:=state);
-bError := fbReqMasterState.bError;
-nErrId := fbReqMasterState.nErrId;]]></ST>
+      <ST><![CDATA[// state machine
+
+CASE state OF
+    eStates.INIT: //default state
+	
+	        bStateChangeSuccessful := FALSE;
+			
+			bStateChangeOccurred := FALSE;
+			bError := FALSE;
+			nErrId := 0;
+			//ADSLOGSTR(msgCtrlMask := ADSLOG_MSGTYPE_HINT, msgFmtStr   := 'occurred set false %s','');
+			
+        IF bExecute THEN
+
+            bExecute := FALSE; // Verhindert erneutes Auslösen
+            bStateChangeSuccessful := FALSE;
+			
+			bStateChangeOccurred := FALSE;
+			
+			fbReqMasterState(sNetId:= sNetId, bExecute:=FALSE, state:= ReqMasterState);
+			
+			state := eStates.START_EXECUTION;
+        END_IF
+        
+    eStates.START_EXECUTION:
+			fbReqMasterState(); //zustand abfragen
+        IF NOT fbReqMasterState.bBusy THEN //nicht starten falls doch noch bussy
+			fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:=ReqMasterState); //starten
+			
+            state := eStates.EXECUTING;
+
+        END_IF
+
+    eStates.EXECUTING:
+	
+		fbReqMasterState(); //Bussy flag update
+
+		IF fbReqMasterState.bBusy THEN
+			// Warten auf Abschluss der Operation
+			// TODO hier timeout
+		ELSE
+            IF NOT fbReqMasterState.bError THEN
+                bStateChangeSuccessful := TRUE;
+											ADSLOGSTR(
+        	msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
+        	msgFmtStr   := 'beendet ohne fehler %s','');
+            ELSE
+                bStateChangeSuccessful := FALSE;
+				bError := fbReqMasterState.bError;
+				nErrId := fbReqMasterState.nErrId;
+							ADSLOGSTR(
+        	msgCtrlMask := ADSLOG_MSGTYPE_HINT, 
+        	msgFmtStr   := 'beendet mit fehler %s','');
+            END_IF
+
+			bStateChangeOccurred := TRUE; // Signalisieren, dass eine Änderung stattgefunden hat
+            state := eStates.DONE;
+        END_IF
+
+    eStates.DONE:
+	
+	bExecute := FALSE;
+    //waiting for reset ...  no automatic reset    
+    //state := eStates.INIT;
+
+ELSE
+	state := eStates.INIT;
+	
+END_CASE;]]></ST>
     </Implementation>
-    <Method Name="SetInit" Id="{29b01c97-b07f-4ad5-9efe-e980c6fe8cda}">
-      <Declaration><![CDATA[METHOD SetInit : BOOL
+    <Method Name="DisableMaster" Id="{29b01c97-b07f-4ad5-9efe-e980c6fe8cda}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD DisableMaster : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:=EC_DEVICE_STATE_INIT);]]></ST>
+        <ST><![CDATA[//only works if state machine is in init mode
+bExecute := TRUE;
+ReqMasterState := EC_DEVICE_STATE_INIT;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="SetOp" Id="{21eda505-3e42-4f35-947a-1d0981096251}">
-      <Declaration><![CDATA[METHOD SetOp : BOOL
+    <Method Name="EnableMaster" Id="{21eda505-3e42-4f35-947a-1d0981096251}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD EnableMaster : BOOL
+VAR_INPUT
+END_VAR
+
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[//only works if state machine is in init mode
+bExecute := TRUE;
+ReqMasterState := EC_DEVICE_STATE_OP;
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_init" Id="{56ada799-e5bc-4eed-8559-e008224ba9a3}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+    bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+    bInCopyCode  : BOOL; // if TRUE, the instance afterwards gets moved into the copy code (online change)
+	sNetId           : T_AmsNetId;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.sNetId := sNetId;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{c595ee5a-e733-4642-89c5-389d3ff9f1b8}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD Reset : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbReqMasterState(sNetId:= sNetId, bExecute:=TRUE, state:=EC_DEVICE_STATE_OP);]]></ST>
+        <ST><![CDATA[state := eStates.INIT;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_EcMasterState">
-      <LineId Id="17" Count="1" />
-      <LineId Id="9" Count="0" />
+      <LineId Id="194" Count="0" />
+      <LineId Id="97" Count="0" />
+      <LineId Id="133" Count="1" />
+      <LineId Id="300" Count="0" />
+      <LineId Id="302" Count="2" />
+      <LineId Id="337" Count="1" />
+      <LineId Id="301" Count="0" />
+      <LineId Id="305" Count="0" />
+      <LineId Id="135" Count="1" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="295" Count="0" />
+      <LineId Id="293" Count="0" />
+      <LineId Id="297" Count="0" />
+      <LineId Id="210" Count="0" />
+      <LineId Id="306" Count="0" />
+      <LineId Id="254" Count="0" />
+      <LineId Id="141" Count="2" />
+      <LineId Id="307" Count="0" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="204" Count="1" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="255" Count="0" />
+      <LineId Id="146" Count="2" />
+      <LineId Id="195" Count="0" />
+      <LineId Id="197" Count="0" />
+      <LineId Id="208" Count="0" />
+      <LineId Id="149" Count="1" />
+      <LineId Id="299" Count="0" />
+      <LineId Id="209" Count="0" />
+      <LineId Id="152" Count="1" />
+      <LineId Id="262" Count="1" />
+      <LineId Id="261" Count="0" />
+      <LineId Id="154" Count="1" />
+      <LineId Id="211" Count="1" />
+      <LineId Id="259" Count="1" />
+      <LineId Id="258" Count="0" />
+      <LineId Id="156" Count="0" />
+      <LineId Id="298" Count="0" />
+      <LineId Id="294" Count="0" />
+      <LineId Id="157" Count="3" />
+      <LineId Id="369" Count="1" />
+      <LineId Id="161" Count="1" />
+      <LineId Id="199" Count="2" />
+      <LineId Id="368" Count="0" />
+      <LineId Id="83" Count="0" />
     </LineIds>
-    <LineIds Name="FB_EcMasterState.SetInit">
-      <LineId Id="9" Count="0" />
+    <LineIds Name="FB_EcMasterState.DisableMaster">
+      <LineId Id="43" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="38" Count="0" />
     </LineIds>
-    <LineIds Name="FB_EcMasterState.SetOp">
+    <LineIds Name="FB_EcMasterState.EnableMaster">
+      <LineId Id="52" Count="0" />
+      <LineId Id="43" Count="2" />
+      <LineId Id="28" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EcMasterState.FB_init">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EcMasterState.Reset">
       <LineId Id="5" Count="0" />
     </LineIds>
   </POU>
