@@ -217,10 +217,10 @@ VAR
 	fbReferenceControlerLeft		: FB_LogicSupply;
 	fbReferenceControlerRight		: FB_LogicSupply;
 	
-	fbEcMasterStateLeft : FB_EcMasterState(sNetId := '5.124.224.126.4.1');
+	fbEcMasterStateLeft : FB_EcMasterState(sNetId := '10.200.20.140.4.1');
 	//fbEcMasterStateRight : FB_EcMasterState(sNetId := '5.124.224.126.6.1');
 	
-	fbSlaveNameLeft : FB_SlaveName(sNetId := '5.124.224.126.4.1');
+	fbSlaveNameLeft : FB_SlaveName(sNetId := '10.200.20.140.4.1');
 	//fbSlaveNameRight : FB_SlaveName(sNetId := '5.124.224.126.6.1');
 END_VAR
 
@@ -348,10 +348,10 @@ END_IF
 /////////////////////Photoelectric-Barrier///////////////////////
 fbWatchPhotoelectricBarrierLeft(nInterrupted := nA72_7);
 
-//IF fbWatchPhotoelectricBarrierLeft.bInterrupted THEN
-//	fbPowerSupplyLeft.SwitchOff();
-//	fbLogicSupplyLeft.SwitchOff();
-//END_IF
+IF fbWatchPhotoelectricBarrierLeft.bInterrupted THEN
+	fbPowerSupplyLeft.SwitchOff();
+	fbLogicSupplyLeft.SwitchOff();
+END_IF
 
 
 ///////////////////////////Testing//////////////////////////////////
